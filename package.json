@@ -1,0 +1,22 @@
+{
+  "name": "cobblestone---frontend",
+  "version": "1.0.0",
+  "description": "Web server for cobblestone frontend libraries",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "keywords": [
+    "web-server",
+    "cobblestone",
+    "static-files"
+  ],
+  "author": "S. Hans",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
+    "open": "^8.0.6"
+  }
+}
