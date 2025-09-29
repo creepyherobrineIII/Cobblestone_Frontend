@@ -54,6 +54,7 @@ CSS STRUCTURE:
   --accent-color:             #717171;
   --white-color:              #fff;
   --black-color:              #272727;
+  --sidebar-color:            #eee2ec;
   --gray-color:               #F3F3F3;
   --gray-color-200:           #E3E3E3;
   --gray-color-300:           #E0E0E0;
@@ -75,6 +76,12 @@ CSS STRUCTURE:
   --bs-box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.08);
 
   --bs-btn-font-size: 1rem;
+
+  /*=========== Transitions ==================*/
+  --tran-02: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.4s ease;
+  --tran-05: all 0.5s ease;
 }
 
 /* Fonts */
@@ -1170,6 +1177,66 @@ th{
     display: none;
   }
 }
+
+/*------------ Sidebar ----------------*/
+.sidebar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 250px;
+  padding: 10px 14px;
+  background-color: var(--sidebar-color);
+}
+
+.sidebar section{
+  position: relative;
+}
+
+.sidebar .image-text a img{
+  width: 90px;
+  border-radius: 6px;
+}
+
+.sidebar section .image-text{
+  border-radius: 6px;
+  align-items: center;
+  width: 50%;
+}
+
+.sidebar .text{
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.sidebar .image{
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+}
+
+section .image-text .header-text{
+  display: flex;
+  padding-left: 50%;
+  flex-direction: column;
+}
+
+.sidebar section .toggle{
+  position: absolute;
+  top: 50%;
+  right: -25px;
+  transform: translateY(-50%);
+  height: 25px;
+  width: 25px;
+  background: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 1rem;
+  color: var(--sidebar-color);
+}
+
 
 /* 4.2 Billboard
 /*----------------------------------------------*/
