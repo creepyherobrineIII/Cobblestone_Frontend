@@ -1,3 +1,17 @@
+//Constants
+const body = document.querySelector("body");
+const sidebar = document.querySelector(".sidebar");
+const toggle = document.querySelector(".toggle");
+
+
+//Toggle sidebar
+toggle.addEventListener("click", () =>{
+  sidebar.classList.toggle("close");
+  //body.classList.toggle("blurred");
+});
+
+
+//Search bar and preloader functions
 (function($) {
 
     "use strict";
@@ -175,3 +189,4 @@
     });
 
 })(jQuery);
+
