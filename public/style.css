@@ -1195,6 +1195,7 @@ th{
   background-color: var(--sidebar-color);
   transition: var(--tran-05);
   backdrop-filter: blur(10px);
+  z-index: 100;
 }
 
 .sidebar.close{
