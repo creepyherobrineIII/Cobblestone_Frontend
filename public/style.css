@@ -862,6 +862,8 @@ th{
   }
 }
 
+
+
 /* Search Bar
 ------------------------------------------------------------- */
 .search-box {
@@ -1187,37 +1189,74 @@ th{
 
 .sidebar{
   position: fixed;
+  box-sizing: border-box;
   top: 0;
   left: 0;
-  height: 100%;
+  height: 100vh;
   width: 250px;
-  padding: 10px 14px;
+  padding: 5px 1rem;
   background-color: var(--sidebar-color);
   transition: var(--tran-05);
   backdrop-filter: blur(10px);
-  z-index: 100;
+  z-index: 15;
 }
 
 .sidebar.close{
   width: 70px;
 }
 
+.sidebar li button{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 0.6rem;
+  transition: var(--tran-04);
+  color: var(--black-color);
+  background-color: var(--sidebar-color);
+  padding-left: 0.5rem;
+  border: 2px solid var(--sidebar-color);
+}
+
+.sidebar li button:hover{
+  background: var(--side-hover-color);
+}
+
+
+#main-content{
+  left: 250px;
+  position: relative;
+  height: 100vh;
+  width: (100% - 250px);
+  transition: var(--tran-05);
+}
+
+.sidebar.close ~ #main-content{
+  left: 70px;
+  width: (100% - 70px);
+}
+
 .sidebar.close .text{
+  opacity: 0;
+}
+
+.sidebar.close .d-icon{
   opacity: 0;
 }
 
 .sidebar ul{
   margin-left: 0;
   padding: 0;
+  list-style: none;
 }
 
-.sidebar li{
-  height: 50px;
-  margin-top: 20px;
+.sidebar .sm-nav-link{
   list-style: none;
   display: flex;
   align-items: center;
   color: var(--black-color);
+  gap: 4em;
 }
 
 .sidebar li .icon{
@@ -1299,6 +1338,45 @@ section .image-text .header-text{
 }
 
 
+.sidebar-dropdown-button{
+  width: 100%;
+  text-align: left;
+  background: none;
+  cursor: pointer;
+}
+
+.sidebar .side-drop{
+  display: block;
+  margin-bottom: auto;
+}
+
+.sidebar .side-drop li{
+  top: 0;
+  list-style: none;
+  font-weight: 500;
+  height: 35px;
+  margin-bottom: auto;
+}
+
+.sidebar .side-drop .sidebar-sub-menu{
+  overflow: hidden;
+  height: 0px;
+  transition: 300ms ease-in-out;
+}
+
+.sidebar .side-drop .sidebar-sub-menu.show{
+  display: block;
+  height: 150px;
+}
+
+.d-icon{
+  transition: 200ms ease-in;
+}
+
+.rotate i:last-child{
+  transition: 200ms ease-in;
+  rotate: 180deg;
+}
 
 /* 4.2 Billboard
 /*----------------------------------------------*/
