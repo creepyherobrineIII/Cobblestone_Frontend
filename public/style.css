@@ -54,7 +54,7 @@ CSS STRUCTURE:
   --accent-color:             #717171;
   --white-color:              #fff;
   --black-color:              #272727;
-  --sidebar-color:            #eee2ec;
+  --sidebar-color:            #c6c5c6;
   --side-hover-color:         #c983cf;
   --gray-color:               #F3F3F3;
   --gray-color-200:           #E3E3E3;
@@ -62,7 +62,7 @@ CSS STRUCTURE:
   --gray-color-500:           #D0D0D0;
   --gray-color-800:           #3A3A3A;
   --light-gray-color:         #D2D2D2;
-  --primary-color:            #F86D72;
+  --primary-color:            #000000;
   --bs-body-color:            #272727;
   --bs-secondary-color:       #FFE8F0;
   --bs-secondary-rgb:         255, 232, 240;
@@ -89,6 +89,14 @@ CSS STRUCTURE:
 :root {
     --body-font           : "Nunito", sans-serif;
     --heading-font        : "Nunito", sans-serif;
+    --logo-font           : "Bowlby One", sans-serif;
+    --logo-small-font     : "Alex Brush", cursive;
+}
+
+.bowlby-one-regular {
+  font-family: var(--logo-font);
+  font-weight: 400;
+  font-style: normal;
 }
 
 @media (min-width: 1850px){
@@ -1113,6 +1121,40 @@ th{
 
 /* 4.1 Header
 /*----------------------------------------------*/
+.logo{
+  font-family: var(--logo-font);
+  font-weight: 400;
+  font-size: 2.5rem;
+}
+
+.logo-small{
+  font-family: var(--logo-small-font);
+  font-weight: 400;
+  font-size: 2rem;
+  font-style: italic;
+}
+
+.logo-div{
+  width: 100%;
+  text-align: center;
+  margin-bottom: -30px;
+}
+
+.logo-small-div{
+  width: 100%;
+  text-align: center;
+}
+
+
+.logo:hover,
+.logo-small:hover{
+  color: var(--black-color);
+}
+
+.lego-set{
+  padding-bottom: -20px;
+}
+
 .site-header {
   width: 100%;
   z-index: 10;
