@@ -4,9 +4,6 @@ const sidebar = document.querySelector(".sidebar");
 const toggle = document.querySelector(".toggle");
 const sideDrop = document.querySelector(".sidebar-dropdown-button")
 
-
-
-
 //Toggle sidebar
 toggle.addEventListener("click", () =>{
   sidebar.classList.toggle("close");
@@ -200,4 +197,14 @@ function toggleSubMenu(button){
     });
 
 })(jQuery);
+
+//Login function
+//Get and validate login credentials
+const logEmail = document.getElementById("");
+const logPass = document.getElementById("")
+
+let validLogCred = false;
+//Check user type logged-in
+
+//
 

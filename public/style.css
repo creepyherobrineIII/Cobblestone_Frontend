@@ -1434,6 +1434,17 @@ section .image-text .header-text{
   rotate: 180deg;
 }
 
+/*------Validation Styling----------*/
+.invalid-box{
+  border: 1.8px solid rgb(202, 32, 32);
+}
+
+.error-label{
+  color: rgb(202, 32, 32);
+  font-style: italic;
+  font-size: 1rem;
+}
+
 /* 4.2 Billboard
 /*----------------------------------------------*/
 /*------------Swiper Arrow -----------*/
