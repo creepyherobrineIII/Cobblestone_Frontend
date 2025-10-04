@@ -4,8 +4,8 @@ const lName = document.getElementById("lName");
 const fNameErrLab = document.getElementById("fNameErrLab");
 const lNameErrLab = document.getElementById("lNameErrLab");
 
-let validFName = false;
-let validLName = false;
+let validFName = true;
+let validLName = true;
 
 
 fName.addEventListener('input', function(){
@@ -19,11 +19,6 @@ fName.addEventListener('input', function(){
     fNameErrLab.textContent = '';
     this.classList.toggle("invalid-box", false);
     validFName = true;
-   }
-
-   if (fNameValue === ""  || fNameValue === ''){
-    this.value = null;
-    validFName = false;
    }
 })
 
@@ -56,7 +51,7 @@ let validPhone = true;
 
 //Check if email is valid
 const memEmail = document.getElementById("memEmail");
-let validEmail = false;
+let validEmail = true;
 
 //Check if passwords match
 const iniPass = document.getElementById("memIniPass");
@@ -73,10 +68,38 @@ let passMatch = true;
 //Register member
 async function memRegister(){
     let boolArray = [validFName, validLName, validAddr, validPhone, validEmail, passMatch];
+    let formArray = [fName, lName, memAddr, memPhone, memEmail, iniPass, confPass]
+    let allNotEmpty = true;
     let allPass = null;
+    let inputEle = null;
+    let message = 'Empty fields:';
 
+    for (let i = 0 ; i< formArray.length; i++){
+        inputEle = formArray[i].value;
 
-    const data = {
+        message += '\n'+ formArray[i].placeholder + 'Valid: '+ boolArray[i];
+
+        switch(inputEle.trim()){
+            case "":{
+                allNotEmpty = false;
+                formArray[i].classList.toggle("invalid-box");
+                boolArray[i] = false;
+            }
+            
+            default:{
+                continue;
+            }
+        }
+    }
+
+    
+    allPass = boolArray.every(flag => flag === true);
+    console.log("Conditions:", allPass);
+    console.log("All not empty: ", allNotEmpty)
+
+    if(allPass === true && allNotEmpty == true){
+
+        const data = {
         firstName: fName.value,
         lastName: lName.value,
         phoneNo: memPhone.value,
@@ -84,11 +107,6 @@ async function memRegister(){
         email:  memEmail.value,
         password: iniPass.value
     }
-
-    allPass = boolArray.every(flag => flag === true);
-    console.log("Conditions:", allPass);
-
-    if(allPass === true){
 
         fetch('http://localhost:8080/member/create-member', {
         method: 'POST',
@@ -111,7 +129,7 @@ async function memRegister(){
             alert(error);
         })
     }else{
-        alert('Incomplete data');
+        alert(message);
     }
 }
 
