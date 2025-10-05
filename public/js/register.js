@@ -212,9 +212,19 @@ async function memRegister(){
     let allPass = null;
     let inputEle = null;
 
+    //Assign values to each 
+    ValuesObj.fNameValue = DOMObj.fName.value;
+    ValuesObj.lNameValue = DOMObj.lName.value;
+    ValuesObj.memAddrValue = DOMObj.memAddr.value;
+    ValuesObj.memPhoneValue = DOMObj.memPhone.value;
+    ValuesObj.memEmailValue = DOMObj.memEmail.value;
+    ValuesObj.confPassValue = DOMObj.confPass.value;
+
     for (let i = 0 ; i< formArray.length; i++){
         inputEle = formArray[i].value;
 
+        console.log(formArray[i].placeholder + ':' + boolArray[i]);
+        console.log(inputEle);
         switch(inputEle.trim()){
             case "":{
                 allNotEmpty = false;
@@ -245,6 +255,8 @@ async function memRegister(){
         password: ValuesObj.iniPassValue
     }
 
+        console.log(data);
+
         fetch('http://localhost:8080/member/create-member', {
         method: 'POST',
         headers: {
@@ -263,7 +275,6 @@ async function memRegister(){
             data.userType = 'Member'
             localStorage.setItem('loggedUser', JSON.stringify(data));
 
-            window.location.href = "index.html"
 
             //Load window with logged profile
 
@@ -277,6 +288,9 @@ async function memRegister(){
             BoolObj = null;
             ValuesObj = null;
             DOMObj = null;
+
+            window.location.href = "index.html"
+            alert('Succesfully registered. \n   Redirecting to homepage     ');
         })
         .catch(error => {
             alert(error);
