@@ -240,10 +240,13 @@ let validLogCred = false;
 
 //Function to change sidebar depending on usertype
 function changeSidebar(userType){
+  BodyObj.userIcon = this.document.getElementById("userIcon");
+
 
   switch(userType){
     case 'Librarian':{
       BodyObj.fullSideMenu.classList.toggle('sidebar close');
+      BodyObj.userIcon.style.display = 'none';
       BodyObj.sideMenuList.innerHTML = `<li class="sm-nav-link">
                             <a href="lib-index.html">
                                 <i class="ri-home-3-line icon"></i>
@@ -302,6 +305,7 @@ function changeSidebar(userType){
 
     case 'Member':{
       BodyObj.fullSideMenu.classList.toggle('sidebar close');
+      BodyObj.userIcon.style.display = 'none';
       BodyObj.sideMenuList.innerHTML = `<li class="sm-nav-link">
                             <a href="#">
                                 <i class="ri-home-3-line icon"></i>
@@ -334,20 +338,20 @@ function changeSidebar(userType){
                            <ul class="sidebar-sub-menu" id="profile-sub-menu">
                                 <li><a href="#"><span class="text sm-nav-text">Change details</span></a></li>
                            </ul>
-                        </li>`
+                        </li>`;
     }
 
     case null:{
       BodyObj.fullSideMenu.style.display = 'none';
+      BodyObj.userIcon.style = '';
     }
 
     default:{
       BodyObj.fullSideMenu.style.display = 'none';
+      BodyObj.userIcon.style = '';
     }
   }
 
-  BodyObj.userIcon = this.document.getElementById("userIcon");
-  BodyObj.userIcon.style.display = 'none';
 }
 
 
