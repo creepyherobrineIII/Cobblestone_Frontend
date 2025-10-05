@@ -24,7 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
   </head>
   <body>
-            <nav class="sidebar close">
+          <nav class="sidebar close" id="full-side">
            <section>
              <div class="image-text">
                 <div class="text header-text">
@@ -35,42 +35,9 @@
             <i class="ri-arrow-right-s-line toggle"></i>
            </section>
 
-           <div class="side-menu-bar">
+           <div class="side-menu-bar" id="side-menu-bar">
                 <div class="side-menu">
-                    <ul class="side-menu-links">
-                        <li class="sm-nav-link">
-                            <a href="#">
-                                <i class="ri-home-3-line icon"></i>
-                                <span class="text sm-nav-text">Home</span>
-                            </a>
-                        </li>
-                        <li class="sm-nav-link">
-                            <a href="#">
-                                <i class="ri-time-line icon"></i>
-                                <span class="text sm-nav-text">Reservations</span>
-                            </a>
-                        </li>
-                        <li class="sm-nav-link side-drop">
-                           <button onclick="toggleSubMenu(this)" class="sidebar-dropdown-button" id="loans-dropdown">
-                                <i class="ri-archive-stack-fill icon"></i>
-                                <span class="text sm-nav-text">Loans</span>
-                                <i class="ri-arrow-drop-down-line d-icon"></i>
-                           </button>
-                           <ul class="sidebar-sub-menu" id="loan-sub-menu">
-                                <li><a href="#"><span class="text sm-nav-text">Active Loans</span></a></li>
-                                <li><a href="#"><span class="text sm-nav-text">Past Loans</span></a></li>
-                           </ul>
-                        </li>
-                        <li class="sm-nav-link side-drop">
-                             <button onclick="toggleSubMenu(this)" class="sidebar-dropdown-button" id="profile-dropdown">
-                                <i class="ri-user-line icon"></i>
-                                <span class="text sm-nav-text">Profile</span>
-                                <i class="ri-arrow-drop-down-line d-icon"></i>
-                           </button>
-                           <ul class="sidebar-sub-menu" id="profile-sub-menu">
-                                <li><a href="#"><span class="text sm-nav-text">Change details</span></a></li>
-                           </ul>
-                        </li>
+                    <ul class="side-menu-links" id="side-menu-list">
                     </ul>
                 </div>
             </div>
@@ -310,7 +277,7 @@
                     </a>
                   </li>
                   <li class="pe-3">
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" id="userIcon">
                       <svg class="user">
                         <use xlink:href="#user"></use>
                       </svg>

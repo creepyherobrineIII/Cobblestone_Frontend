@@ -1,88 +1,225 @@
+//Registration Javascript
+
+//Singular DOM object for memory managament
+let DOMObj = {
+    fName : null, 
+    lName : null,
+    memAddr : null,
+    memPhone :null,
+    memEmail : null,
+    iniPass : null,
+    confPass : null,
+    fNameErrLab : null,
+    lNameErrLab : null,
+    memAddrErrLab : null,
+    memPhoneErrLab : null,
+    memEmailErrLab : null,
+    iniPassErrLab : null,
+    confPassErrLab : null
+}
+
+
+//Single values object for memory management
+let ValuesObj = {
+    fNameValue : null,
+    lNameValue : null,
+    memAddrValue : null,
+    memPhoneValue : null,
+    memEmailValue : null,
+    iniPassValue : null,
+    confPassValue : null
+}
+
+//Boolean flags object for memory management
+let BoolObj = {
+    validFName : true,
+    validLName : true,
+    validAddr : true,
+    validPhone : true,
+    validEmail : true, 
+    validPass : true,
+    validConf : true
+}
+
+
 //Validating name lengths
-const fName = document.getElementById("fName");
-const lName = document.getElementById("lName");
-const fNameErrLab = document.getElementById("fNameErrLab");
-const lNameErrLab = document.getElementById("lNameErrLab");
+//DOM Object(s)
+DOMObj.fName = document.getElementById("fName");
+DOMObj.lName = document.getElementById("lName");
 
-let validFName = true;
-let validLName = true;
+//Error Label(s)
+DOMObj.fNameErrLab = document.getElementById("fNameErrLab");
+DOMObj.lNameErrLab = document.getElementById("lNameErrLab");
 
 
-fName.addEventListener('input', function(){
-    const fNameValue = this.value;
+
+DOMObj.fName.addEventListener('input', function(){
+    ValuesObj.fNameValue = this.value;
     
-   if(fNameValue.length < 2){
-    fNameErrLab.textContent = '(Invalid name length)';
+   if(ValuesObj.fNameValue.length < 2){
+    DOMObj.fNameErrLab.textContent = '(Invalid name length)';
     this.classList.toggle("invalid-box", true);
-    validFName = false;
+    BoolObj.validFName = false;
    }else{
-    fNameErrLab.textContent = '';
+    DOMObj.fNameErrLab.textContent = '';
     this.classList.toggle("invalid-box", false);
-    validFName = true;
+    BoolObj.validFName = true;
    }
 })
 
 
-lName.addEventListener('input', function(){
-    const lNameValue = this.value;
+DOMObj.lName.addEventListener('input', function(){
+    ValuesObj.lNameValue = this.value;
     
-   if(lNameValue.length < 2){
-    lNameErrLab.textContent = '(Invalid name length)';
+   if(ValuesObj.lNameValue.length < 2){
+    DOMObj.lNameErrLab.textContent = '(Invalid name length)';
     this.classList.toggle("invalid-box", true);
-    validLName = false;
+    BoolObj.validLName = false;
    }else{
-    lNameErrLab.textContent = '';
+    DOMObj.lNameErrLab.textContent = '';
     this.classList.toggle("invalid-box", false);
-    validLName = true;
+    BoolObj.validLName = true;
    }
 })
 
 
 
 //Check if address has value
-const memAddr = document.getElementById("memAddr");
-let validAddr = true;
+//DOM Object(s)
+DOMObj.memAddr = document.getElementById("memAddr");
+
+//Error Label(s)
+DOMObj.memAddrErrLab = document.getElementById("memAddrErrLab");
+
+DOMObj.memAddr.addEventListener('input', function(){
+    ValuesObj.memAddrValue = this.value;
+    
+   if(ValuesObj.memAddrValue.length < 2){
+    DOMObj.memAddrErrLab.textContent = '(Invalid address)';
+    this.classList.toggle("invalid-box", true);
+    BoolObj.validAddr = false;
+   }else{
+    DOMObj.memAddrErrLab.textContent = '';
+    this.classList.toggle("invalid-box", false);
+    BoolObj.validAddr = true;
+   }
+})
 
 
 //Check if phone number is valid
-const memPhone = document.getElementById("memPhone");
-let validPhone = true;
+//DOM Object(s)
+DOMObj.memPhone = document.getElementById("memPhone");
+
+//Error Label(s)
+DOMObj.memPhoneErrLab = document.getElementById("memPhoneErrLab");
+
+
+DOMObj.memPhone.addEventListener('input', function(){
+    ValuesObj.memPhoneValue = this.value;
+
+    const phoneReg = /^\d+$/;
+
+    let numbcheck = phoneReg.test(ValuesObj.memPhoneValue);
+    
+   if(ValuesObj.memPhoneValue.length !== 10 || !numbcheck){
+    DOMObj.memPhoneErrLab.textContent = '(Invalid phone number)';
+    this.classList.toggle("invalid-box", true);
+    BoolObj.validPhone = false;
+   }else{
+    DOMObj.memPhoneErrLab.textContent = '';
+    this.classList.toggle("invalid-box", false);
+    BoolObj.validPhone = true;
+   };
+
+
+})
 
 
 //Check if email is valid
-const memEmail = document.getElementById("memEmail");
-let validEmail = true;
+
+//DOM Object(s)
+DOMObj.memEmail = document.getElementById("memEmail");
+
+//Error Label(s)
+DOMObj.memEmailErrLab = document.getElementById("memEmailErrLab");
+
+
+DOMObj.memEmail.addEventListener('input', function(){
+    ValuesObj.memEmailValue = this.value;
+
+    const emailReg = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    BoolObj.validEmail = emailReg.test(ValuesObj.memEmailValue);
+
+    if (BoolObj.validEmail === false){
+        DOMObj.memEmailErrLab.textContent = '(Invalid email, must contain: @ and email domain)';
+        this.classList.toggle("invalid-box", true);
+    }else{
+        DOMObj.memEmailErrLab.textContent = '';
+        this.classList.toggle("invalid-box", false);
+    }
+})
+
+
 
 //Check if passwords match
-const iniPass = document.getElementById("memIniPass");
-const confPass = document.getElementById("memConfPass");
+//DOM Object(s)
+DOMObj.iniPass = document.getElementById("memIniPass");
+DOMObj.confPass = document.getElementById("memConfPass");
 
-let passMatch = true;
+//Error Label(s)
+DOMObj.iniPassErrLab = document.getElementById("iniPassErrLab");
+DOMObj.confPassErrLab = document.getElementById("confPassErrLab");
 
 
+DOMObj.confPass.addEventListener('input', function(){
 
-//Check if all flags are true
+    ValuesObj.iniPassValue = DOMObj.iniPass.value;
+    ValuesObj.confPassValue = this.value;
+
+    
+    if (ValuesObj.iniPassValue.trim() === ""){
+        DOMObj.iniPassErrLab.textContent = '(Password field must be filled first)';
+        DOMObj.iniPass.classList.toggle("invalid-box", true);
+        BoolObj.validPass = false;
+    }else{
+        DOMObj.iniPassErrLab.textContent = '';
+        DOMObj.iniPass.classList.toggle("invalid-box", false);
+        BoolObj.validPass = true;
+    }
+
+    if (ValuesObj.confPassValue !== ValuesObj.iniPassValue){
+        DOMObj.confPassErrLab.textContent = '(Passwords do not match)';
+        this.classList.toggle("invalid-box", true);
+        BoolObj.validConf = false;
+    }else{
+        DOMObj.confPassErrLab.textContent = '';
+        this.classList.toggle("invalid-box", false);
+        BoolObj.validConf = true;
+    }
+})
 
 
 
 //Register member
 async function memRegister(){
-    let boolArray = [validFName, validLName, validAddr, validPhone, validEmail, passMatch];
-    let formArray = [fName, lName, memAddr, memPhone, memEmail, iniPass, confPass]
+
+    //Arrays for checking flags and adjusting form error handling
+    let boolArray = [BoolObj.validFName, BoolObj.validLName, BoolObj.validAddr, BoolObj.validPhone, BoolObj.validEmail, BoolObj.validPass, BoolObj.validConf];
+    let formArray = [DOMObj.fName, DOMObj.lName, DOMObj.memAddr, DOMObj.memPhone, DOMObj.memEmail, DOMObj.iniPass, DOMObj.confPass]
+    let labelArray = [DOMObj.fNameErrLab, DOMObj.lNameErrLab, DOMObj.memAddrErrLab, DOMObj.memPhoneErrLab, DOMObj.memEmailErrLab, DOMObj.iniPassErrLab, DOMObj.confPassErrLab]
     let allNotEmpty = true;
     let allPass = null;
     let inputEle = null;
-    let message = 'Empty fields:';
 
     for (let i = 0 ; i< formArray.length; i++){
         inputEle = formArray[i].value;
-
-        message += '\n'+ formArray[i].placeholder + 'Valid: '+ boolArray[i];
 
         switch(inputEle.trim()){
             case "":{
                 allNotEmpty = false;
                 formArray[i].classList.toggle("invalid-box");
+                labelArray[i].textContent = '(' + labelArray[i].placeholder + ' field cannot be empty)';
                 boolArray[i] = false;
             }
             
@@ -95,17 +232,17 @@ async function memRegister(){
     
     allPass = boolArray.every(flag => flag === true);
     console.log("Conditions:", allPass);
-    console.log("All not empty: ", allNotEmpty)
+    console.log("All not empty: ", allNotEmpty);
 
     if(allPass === true && allNotEmpty == true){
 
         const data = {
-        firstName: fName.value,
-        lastName: lName.value,
-        phoneNo: memPhone.value,
-        address: memAddr.value,
-        email:  memEmail.value,
-        password: iniPass.value
+        firstName: ValuesObj.fNameValue,
+        lastName: ValuesObj.lNameValue,
+        phoneNo: ValuesObj.memPhoneValue,
+        address: ValuesObj.memAddrValue,
+        email:  ValuesObj.memEmailValue,
+        password: ValuesObj.iniPassValue
     }
 
         fetch('http://localhost:8080/member/create-member', {
@@ -121,15 +258,29 @@ async function memRegister(){
 
             return response.json();
         })
-        .then(data =>{
+        .then(data => {
             console.log(data);
+            data.userType = 'Member'
             localStorage.setItem('loggedUser', JSON.stringify(data));
+
+            window.location.href = "index.html"
+
+            //Load window with logged profile
+
+            //Deallocating memory
+            //Arrays
+            labelArray = null;
+            formArray = null;
+            boolArray = null;
+
+            //Objects 
+            BoolObj = null;
+            ValuesObj = null;
+            DOMObj = null;
         })
         .catch(error => {
             alert(error);
         })
-    }else{
-        alert(message);
     }
 }
 

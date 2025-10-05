@@ -16,7 +16,21 @@ function toggleSubMenu(button){
   button.classList.toggle('rotate');
 }
 
+//Singular DOM object for memory managament
+let BodyObj = {
+  userIcon: null,
+  loginEmail: null,
+  loginPass: null,
+  sideMenuBar: null,
+  sideMenuList: null,
+  fullSideMenu: null
+};
 
+//Single values object for memory management
+let BodyValuesObj = {
+  loginEmailValue: null,
+  loginPassValue: null
+};
 
 
 //Search bar and preloader functions
@@ -198,13 +212,142 @@ function toggleSubMenu(button){
 
 })(jQuery);
 
-//Login function
-//Get and validate login credentials
-const logEmail = document.getElementById("");
-const logPass = document.getElementById("")
+
+//Check if user is logged in && user type for sidebar
+
+window.addEventListener('load', function(){
+
+  BodyObj.fullSideMenu = document.getElementById("full-side");
+
+  if (localStorage.getItem('loggedUser') !== null){
+
+    let loggedUser = localStorage.getItem('loggedUser');
+    let userT = loggedUser.userType;
+
+    changeSidebar(userT);
+
+  }else{
+    changeSidebar(null);
+  }
+})
+
+BodyObj.loginEmail = document.getElementById("loginEmail");
+BodyObj.loginPass = document.getElementById("loginPass");
 
 let validLogCred = false;
 //Check user type logged-in
 
-//
+
+//Function to change sidebar depending on usertype
+function changeSidebar(userType){
+
+  switch(userType){
+    case 'Librarian':{
+      BodyObj.fullSideMenu.classList.toggle('sidebar close');
+      BodyObj.sideMenuList.innerHTML = `<li class="sm-nav-link">
+                            <a href="lib-index.html">
+                                <i class="ri-home-3-line icon"></i>
+                                <span class="text sm-nav-text">Home</span>
+                            </a>
+                        </li>
+                        <li class="sm-nav-link side-drop">
+                             <button onclick="toggleSubMenu(this)" class="sidebar-dropdown-button" id="books-dropdown">
+                                <i class="ri-book-shelf-line"></i>
+                                <span class="text sm-nav-text">Books</span>
+                                <i class="ri-arrow-drop-down-line d-icon"></i>
+                           </button>
+                           <ul class="sidebar-sub-menu" id="books-sub-menu">
+                                <li><a href="check-in.html"><span class="text sm-nav-text">Check-In</span></a></li>
+                                <li><a href="check-out.html"><span class="text sm-nav-text">Check-Out</span></a></li>
+                           </ul>
+                        </li>
+                        <li class="sm-nav-link side-drop">
+                           <button onclick="toggleSubMenu(this)" class="sidebar-dropdown-button" id="loans-dropdown">
+                                <i class="ri-archive-stack-fill icon"></i>
+                                <span class="text sm-nav-text">Loans</span>
+                                <i class="ri-arrow-drop-down-line d-icon"></i>
+                           </button>
+                           <ul class="sidebar-sub-menu" id="loan-sub-menu">
+                                <li><a href="fee-payment.html"><span class="text sm-nav-text">Fee Payment</span></a></li>
+                           </ul>
+                        </li>
+                        <li class="sm-nav-link side-drop">
+                             <button onclick="toggleSubMenu(this)" class="sidebar-dropdown-button" id="inventory-dropdown">
+                                <i class="ri-survey-line"></i>
+                                <span class="text sm-nav-text">Inventory</span>
+                                <i class="ri-arrow-drop-down-line d-icon"></i>
+                           </button>
+                           <ul class="sidebar-sub-menu" id="inventory-sub-menu">
+                                <li><a href="add-book.html"><span class="text sm-nav-text">Add book</span></a></li>
+                                <li><a href="lib-catalogue.html"><span class="text sm-nav-text">Update inventory</span></a></li>
+                           </ul>
+                        </li>
+                        <li class="sm-nav-link">
+                            <a href="stats.html">
+                                <i class="ri-bar-chart-line"></i>
+                                <span class="text sm-nav-text">Analytics</span>
+                            </a>
+                        </li>
+                        <li class="sm-nav-link side-drop">
+                             <button onclick="toggleSubMenu(this)" class="sidebar-dropdown-button" id="profile-dropdown">
+                                <i class="ri-user-line icon"></i>
+                                <span class="text sm-nav-text">Profile</span>
+                                <i class="ri-arrow-drop-down-line d-icon"></i>
+                           </button>
+                           <ul class="sidebar-sub-menu" id="profile-sub-menu">
+                                <li><a href="#"><span class="text sm-nav-text">Change details</span></a></li>
+                           </ul>
+                        </li>`
+    }
+
+    case 'Member':{
+      BodyObj.fullSideMenu.classList.toggle('sidebar close');
+      BodyObj.sideMenuList.innerHTML = `<li class="sm-nav-link">
+                            <a href="#">
+                                <i class="ri-home-3-line icon"></i>
+                                <span class="text sm-nav-text">Home</span>
+                            </a>
+                        </li>
+                        <li class="sm-nav-link">
+                            <a href="#">
+                                <i class="ri-time-line icon"></i>
+                                <span class="text sm-nav-text">Reservations</span>
+                            </a>
+                        </li>
+                        <li class="sm-nav-link side-drop">
+                           <button onclick="toggleSubMenu(this)" class="sidebar-dropdown-button" id="loans-dropdown">
+                                <i class="ri-archive-stack-fill icon"></i>
+                                <span class="text sm-nav-text">Loans</span>
+                                <i class="ri-arrow-drop-down-line d-icon"></i>
+                           </button>
+                           <ul class="sidebar-sub-menu" id="loan-sub-menu">
+                                <li><a href="#"><span class="text sm-nav-text">Active Loans</span></a></li>
+                                <li><a href="#"><span class="text sm-nav-text">Past Loans</span></a></li>
+                           </ul>
+                        </li>
+                        <li class="sm-nav-link side-drop">
+                             <button onclick="toggleSubMenu(this)" class="sidebar-dropdown-button" id="profile-dropdown">
+                                <i class="ri-user-line icon"></i>
+                                <span class="text sm-nav-text">Profile</span>
+                                <i class="ri-arrow-drop-down-line d-icon"></i>
+                           </button>
+                           <ul class="sidebar-sub-menu" id="profile-sub-menu">
+                                <li><a href="#"><span class="text sm-nav-text">Change details</span></a></li>
+                           </ul>
+                        </li>`
+    }
+
+    case null:{
+      BodyObj.fullSideMenu.style.display = 'none';
+    }
+
+    default:{
+      BodyObj.fullSideMenu.style.display = 'none';
+    }
+  }
+
+  BodyObj.userIcon = this.document.getElementById("userIcon");
+  BodyObj.userIcon.style.display = 'none';
+}
+
 
