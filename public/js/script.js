@@ -1,14 +1,6 @@
 //Constants
-const body = document.querySelector("body");
 const sidebar = document.querySelector(".sidebar");
-const toggle = document.querySelector(".toggle");
 const sideDrop = document.querySelector(".sidebar-dropdown-button")
-
-//Toggle sidebar
-toggle.addEventListener("click", () =>{
-  sidebar.classList.toggle("close");
-  //body.classList.toggle("blurred");
-});
 
 //Toggle sidebar dropdown
 function toggleSubMenu(button){
@@ -23,7 +15,8 @@ let BodyObj = {
   loginPass: null,
   sideMenuBar: null,
   sideMenuList: null,
-  fullSideMenu: null
+  fullSideMenu: null,
+  logErrLab: null
 };
 
 //Single values object for memory management
@@ -218,11 +211,22 @@ let BodyValuesObj = {
 window.addEventListener('load', function(){
 
   BodyObj.fullSideMenu = document.getElementById("full-side");
+  BodyObj.sideMenuList = document.getElementById("side-menu-list");
+
+  const toggle = document.querySelector(".toggle");
+
+  //Toggle sidebar
+    toggle.addEventListener("click", () =>{
+      sidebar.classList.toggle("close");
+      //body.classList.toggle("blurred");
+    });
+
 
   if (localStorage.getItem('loggedUser') !== null){
 
     let loggedUser = localStorage.getItem('loggedUser');
-    let userT = loggedUser.userType;
+    let user = JSON.parse(loggedUser);
+    let userT = user.userType;
 
     changeSidebar(userT);
 
@@ -231,21 +235,57 @@ window.addEventListener('load', function(){
   }
 })
 
-BodyObj.loginEmail = document.getElementById("loginEmail");
-BodyObj.loginPass = document.getElementById("loginPass");
 
-let validLogCred = false;
-//Check user type logged-in
+//Login user (independent of type)
+async function userLog(){
+  
+  //Get login details
+  BodyObj.loginEmail = document.getElementById("loginEmail");
+  BodyObj.loginPass = document.getElementById("loginPass");
+  BodyObj.logErrLab = document.getElementById("logErrLab");
 
+
+  let user = {
+    email: BodyObj.loginEmail.value,
+    password: BodyObj.loginPass.value
+  }
+
+
+  //Login user
+  fetch('http://localhost:8080/login', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(user)
+  }).then(response => {
+    if (response.status === 401 || response.status === 400){
+      throw new Error('Incorrect email/password')
+    }
+
+    return response.json();
+  }).then(data =>{
+    
+    if (data !== null && data !== undefined){
+      localStorage.setItem('loggedUser', data);
+      
+      window.location.reload();
+    }
+  }).catch(error =>{
+
+    BodyObj.logErrLab.textContent = error.toString();
+  })
+}
 
 //Function to change sidebar depending on usertype
 function changeSidebar(userType){
   BodyObj.userIcon = this.document.getElementById("userIcon");
 
-
   switch(userType){
     case 'Librarian':{
-      BodyObj.fullSideMenu.classList.toggle('sidebar close');
+      BodyObj.fullSideMenu.classList.toggle('sidebar', true);
+      BodyObj.fullSideMenu.classList.toggle('close', true);
+      BodyObj.fullSideMenu.style.removeProperty('display');
       BodyObj.userIcon.style.display = 'none';
       BodyObj.sideMenuList.innerHTML = `<li class="sm-nav-link">
                             <a href="lib-index.html">
@@ -304,7 +344,9 @@ function changeSidebar(userType){
     }
 
     case 'Member':{
-      BodyObj.fullSideMenu.classList.toggle('sidebar close');
+      BodyObj.fullSideMenu.classList.toggle('sidebar', true);
+      BodyObj.fullSideMenu.classList.toggle('close', true);
+      BodyObj.fullSideMenu.style.removeProperty('display');
       BodyObj.userIcon.style.display = 'none';
       BodyObj.sideMenuList.innerHTML = `<li class="sm-nav-link">
                             <a href="#">
@@ -342,12 +384,11 @@ function changeSidebar(userType){
     }
 
     case null:{
-      BodyObj.fullSideMenu.style.display = 'none';
       BodyObj.userIcon.style = '';
+      BodyObj.fullSideMenu.style.display = 'none'
     }
 
     default:{
-      BodyObj.fullSideMenu.style.display = 'none';
       BodyObj.userIcon.style = '';
     }
   }
