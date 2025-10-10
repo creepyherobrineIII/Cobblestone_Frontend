@@ -1,0 +1,22 @@
+//Body elements
+let bookDescription = document.getElementById("nav-home");
+let addInfo = document.getElementById("nav-information");
+
+//Variables
+let bookCatalogue = null;
+let selectedBook = null;
+
+//Load event listener
+window.addEventListener('load', function(){
+    //Get ISBN
+    const urlString = window.location.search;
+    const urlParamObj = new URLSearchParams(urlString);
+    let bookISBN = urlParamObj.get('isbn');
+
+
+    bookCatalogue = JSON.parse(localStorage.getItem('libraryBooks'));
+
+    if (bookCatalogue !== null){
+
+    }
+})

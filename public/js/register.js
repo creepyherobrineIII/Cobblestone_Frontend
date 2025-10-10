@@ -41,6 +41,8 @@ let BoolObj = {
     validConf : true
 }
 
+//API Url
+let memberURL = 'http://localhost:8080/member/create-member'
 
 //Validating name lengths
 //DOM Object(s)
@@ -50,7 +52,6 @@ DOMObj.lName = document.getElementById("lName");
 //Error Label(s)
 DOMObj.fNameErrLab = document.getElementById("fNameErrLab");
 DOMObj.lNameErrLab = document.getElementById("lNameErrLab");
-
 
 
 DOMObj.fName.addEventListener('input', function(){
@@ -257,7 +258,7 @@ async function memRegister(){
 
         console.log(data);
 
-        fetch('http://localhost:8080/member/create-member', {
+        fetch(memberURL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

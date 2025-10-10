@@ -1,6 +1,9 @@
 //Constants
 const sidebar = document.querySelector(".sidebar");
-const sideDrop = document.querySelector(".sidebar-dropdown-button")
+const sideDrop = document.querySelector(".sidebar-dropdown-button");
+const newUserDropdown = document.getElementById("log-wishlist-drop");
+//Variables
+let bookURL = 'http://localhost:8080/books/inventory';
 
 //Toggle sidebar dropdown
 function toggleSubMenu(button){
@@ -220,8 +223,29 @@ window.addEventListener('load', function(){
       sidebar.classList.toggle("close");
       //body.classList.toggle("blurred");
     });
+  
+  //Get catalogue
 
+  fetch(bookURL, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    }).then(response => {
+        if (!response.ok){
+            if(response.status === 400){
+                throw new Error();
+            }
+        }
+        return response.json();
+    }).then(data => {
+        localStorage.setItem('libraryBooks', JSON.stringify(data));
+    }).catch(()=>{
+        alert('Could not get catalogue');
+    })
+  
 
+  //Get logged user
   if (localStorage.getItem('loggedUser') !== null){
 
     let loggedUser = localStorage.getItem('loggedUser');
@@ -229,6 +253,8 @@ window.addEventListener('load', function(){
     let userT = user.userType;
 
     changeSidebar(userT);
+
+
 
   }else{
     changeSidebar(null);
@@ -394,5 +420,9 @@ function changeSidebar(userType){
   }
 
 }
+
+/*function toggleNewUserIconDrop(){
+  newUserDropdown.
+}*/
 
 
