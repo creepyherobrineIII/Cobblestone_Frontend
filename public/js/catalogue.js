@@ -139,7 +139,7 @@ async function displayResults(){
             bookItem.classList.toggle("mb-4", true);
 
             bookItem.innerHTML = `<div class="card position-relative p-4 border rounded-3">
-                        <a href="book.html/?isbn=${book.ISBN}"><img src="${book.picture}" class="img-fluid shadow-sm" alt="${book.bookTitle}"></a>
+                        <a href="book.html?isbn=${book.ISBN}"><img src="${book.picture}" class="img-fluid shadow-sm" alt="${book.bookTitle}"></a>
                         <h6 class="mt-4 mb-0 fw-bold"><a href="book.html/?isbn=${book.ISBN}">${book.bookTitle}</a></h6>
                         <p class="my-2 me-2 fs-6 text-black-50">${book.author}</p>
                     </div>`;

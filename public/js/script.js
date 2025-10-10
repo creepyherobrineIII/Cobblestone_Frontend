@@ -188,17 +188,6 @@ let BodyValuesObj = {
         },
       });
 
-      var thumb_slider = new Swiper(".thumb-swiper", {
-        slidesPerView: 1,
-      });
-      var large_slider = new Swiper(".large-swiper", {
-        spaceBetween: 10,
-        effect: 'fade',
-        thumbs: {
-          swiper: thumb_slider,
-        },
-      });
-
     }); // End of a document ready
 
     window.addEventListener("load", function () {
