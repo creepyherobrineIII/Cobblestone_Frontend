@@ -1282,17 +1282,17 @@ th{
 
 
 #main-content{
-  left: 70px;
+  left: 100px;
   position: relative;
   height: 100vh;
-  width: (100vh - 70px);
+  width: (100vh - 200px);
   transition: var(--tran-05);
 }
 
 
 .sidebar.close ~ #main-content{
   left: 70px;
-  width: (100% - 70px);
+  width: (100% - 100px);
 }
 
 .sidebar.close .text{

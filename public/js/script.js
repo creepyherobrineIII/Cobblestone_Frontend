@@ -1,9 +1,10 @@
 //Constants
-const sidebar = document.querySelector(".sidebar");
-const sideDrop = document.querySelector(".sidebar-dropdown-button");
-const newUserDropdown = document.getElementById("log-wishlist-drop");
+var sidebar = document.querySelector(".sidebar");
+var sideDrop = document.querySelector(".sidebar-dropdown-button");
+var newUserDropdown = document.getElementById("log-wishlist-drop");
 //Variables
-let bookURL = 'http://localhost:8080/books/inventory';
+var bookURL = 'http://localhost:8080/books/inventory';
+let iTimeslooped = 0;
 
 //Toggle sidebar dropdown
 function toggleSubMenu(button){
@@ -12,7 +13,7 @@ function toggleSubMenu(button){
 }
 
 //Singular DOM object for memory managament
-let BodyObj = {
+var BodyObj = {
   userIcon: null,
   loginEmail: null,
   loginPass: null,
@@ -23,7 +24,7 @@ let BodyObj = {
 };
 
 //Single values object for memory management
-let BodyValuesObj = {
+var BodyValuesObj = {
   loginEmailValue: null,
   loginPassValue: null
 };
@@ -201,7 +202,6 @@ let BodyValuesObj = {
 //Check if user is logged in && user type for sidebar
 
 window.addEventListener('load', function(){
-
   BodyObj.fullSideMenu = document.getElementById("full-side");
   BodyObj.sideMenuList = document.getElementById("side-menu-list");
 
@@ -242,12 +242,10 @@ window.addEventListener('load', function(){
     let userT = user.userType;
 
     changeSidebar(userT);
-
-
-
   }else{
-    changeSidebar(null);
+    changeSidebar('Not logged');
   }
+    
 })
 
 
@@ -294,6 +292,7 @@ async function userLog(){
 
 //Function to change sidebar depending on usertype
 function changeSidebar(userType){
+  console.log(userType);
   BodyObj.userIcon = this.document.getElementById("userIcon");
 
   switch(userType){
@@ -355,7 +354,8 @@ function changeSidebar(userType){
                            <ul class="sidebar-sub-menu" id="profile-sub-menu">
                                 <li><a href="#"><span class="text sm-nav-text">Change details</span></a></li>
                            </ul>
-                        </li>`
+                        </li>`;
+                        break;
     }
 
     case 'Member':{
@@ -396,12 +396,14 @@ function changeSidebar(userType){
                                 <li><a href="#"><span class="text sm-nav-text">Change details</span></a></li>
                            </ul>
                         </li>`;
-    }
+                        break;
+    };
 
-    case null:{
+    case 'Not logged':{
       BodyObj.userIcon.style = '';
       BodyObj.fullSideMenu.style.display = 'none'
-    }
+      break;
+    };
 
     default:{
       BodyObj.userIcon.style = '';

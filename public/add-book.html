@@ -24,7 +24,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
   </head>
   <body>
-            <nav class="sidebar close" id="full-side">
+          <nav class="sidebar close" id="full-side">
            <section>
              <div class="image-text">
                 <div class="text header-text">
@@ -189,7 +189,15 @@
         </div>
     </div>
 
-    <div id="main-content">
+    <div class="logo-set">
+      <div class="logo-div">
+      <a href="index.html" class="logo" >COBBLESTONE</a>
+      </div>
+      <div class="logo-small-div">
+        <a href="index.html" class="logo-small">Library</a>
+      </div>
+    </div>
+
     <nav id="header-nav" class="navbar navbar-expand-lg py-3">
         <div class="container">
         <div class="logo-text">
@@ -376,7 +384,11 @@
               <div class="swiper large-swiper border rounded-3 overflow-hidden swiper-fade swiper-initialized swiper-horizontal swiper-watch-progress swiper-backface-hidden">
                 <div class="swiper-wrapper" id="swiper-wrapper-b873626ddb1dc786" aria-live="polite">
                   <div class="swiper-slide bg-white swiper-slide-active swiper-slide-visible swiper-slide-fully-visible" role="group" aria-label="1 / 3" style="transform: translate3d(0px, 0px, 0px); width: 512px; opacity: 1;" id="main-book-pic">
-                    <img src="images/add-image.png" alt="single-product" class="img-fluid">
+                    <img src="images/add-image.png" alt="single-product" class="img-fluid" id="image-preview">
+                    <form action="" enctype="multipart/form-data">
+                      <label for="book-cover" id="bookpic-label">Select cover image</label>
+                    <input type="file" name="book-cover" id="bookPic" accept="image/*" placeholder="" >
+                    </form>
                   </div>
                 </div>
               <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
@@ -384,79 +396,113 @@
             </div>
           </div>
           <div class="col-lg-6">
-            <div class="product-info ps-lg-5 pt-3 pt-lg-0">
-              <div class="element-header">
-                <h1 class="product-title" id="book-title">The Emerald Crown</h1>
-                
-                
+            <div class="inquiry-item col-lg-8">
+            <form id="form" class="d-flex gap-3 flex-wrap">
+              <div class="w-200">
+                <label for="ISBN" style="text-align: center; font-weight: 600;">ISBN <span class="error-label" id="isbn-label"></span></label>
+                <input type="text" name="ISBN" placeholder="ISBN" class="form-control w-100" id="bookisbn">
               </div>
-              <p id="book-author">Justo, cum feugiat imperdiet nulla molestie ac vulputate scelerisque amet. Bibendum adipiscing platea blandit sit sed quam semper rhoncus.</p>
-              <hr>
-              <div class="cart-wrap">
-                
-                
-                <div class="product-quantity my-3">
-                  <div class="item-title">
-                    <l id="inventory-label"></l>
-                  </div>
-                  
-                </div>
-                <div class="action-buttons my-3 d-flex flex-wrap gap-3">
-                  <a href="#" class="btn" id="reserve-button">Reserve a copy</a>
-                </div>
+              <div class="w-200">
+                <label for="title" style="text-align: center; font-weight: 600;">Title<span class="error-label" id="title-label"></span></label>
+                <input type="text" name="title" placeholder="Title" class="form-control w-100" id="booktitle">
               </div>
-<hr>
-              <div class="meta-product my-3">
-                <div class="meta-item d-flex mb-1">
-                  <span class="fw-medium me-2">ISBN:</span>
-                  <ul class="select-list list-unstyled d-flex mb-0" id="isbn-li">
-                    
-                  </ul>
-                </div>
-                <div class="meta-item d-flex mb-1">
-                  <span class="fw-medium me-2">Genre:</span>
-                  <ul class="select-list list-unstyled d-flex mb-0" id="main-genre-list">
-                   
-                  </ul>
-                </div>
-                <div class="meta-item d-flex mb-1">
-                  <span class="fw-medium me-2">Sub-genre(s):</span>
-                  <ul class="select-list list-unstyled d-flex mb-0" id="sub-genre-list">
-                    
-                   
-                  </ul>
-                </div>
+              <div class="w-200">
+                <label for="author" style="text-align: center; font-weight: 600;">Author<span class="error-label" id="author-label"></span></label>
+                <input type="text" name="author" placeholder="Author" class="form-control w-100" id="bookauthor">
               </div>
-            </div>
+              <div class="w-200">
+                <label for="publisher" style="text-align: center; font-weight: 600;">Publisher<span class="error-label" id="publisher-label"></span></label>
+                <input type="text" name="publisher" placeholder="Publisher" class="form-control w-100" id="publisher">
+              </div>
+              <div class="w-200">
+                <label for="publishDate" style="text-align: center; font-weight: 600;">Publication Date<span class="error-label" id="pubDate-label"></span></label>
+                <input type="date" name="publishDate" placeholder="Date of publish" class="form-control w-100" id="pubdate">
+              </div>
+              <div class="w-200">
+                <label for="description" style="text-align: center; font-weight: 600;">Description<span class="error-label" id="desc-label"></span></label>
+                <textarea placeholder="Book Description" class="form-control w-100" id="bookdesc"></textarea>
+              </div>
+              <div class="w-200">
+                <label for="genre" style="text-align: center; font-weight: 600;">Genre<span class="error-label" id="genre-label"></span></label>
+                <select name="genre" id="genreChoice" class="form-control w-100" placeholder="Genre">
+                  <option value="">Select an option...</option>
+                  <option value="Arts">Arts</option>
+                  <option value="Business & Finance">Business & Finance</option>
+                  <option value="Children's Books">Children's Books</option>
+                  <option value="Fiction">Fiction</option>
+                  <option value="Health & Wellness">Health & Wellness</option>
+                  <option value="Non-fiction">Non-fiction</option>
+                  <option value="Religious">Religious</option>
+                  <option value="Science, Technology & Mathematics">Science, Technology & Mathematics</option>
+                  <option value="Social Sciences">Social Sciences</option>
+                  <option value="Textbooks">Textbooks</option>
+                </select>
+              </div>
+              <div class="w-200">
+                <label for="subgenreChoice" style="text-align: center; font-weight: 600;">Subgenre<span class="error-label" id="subgenre-label"></span></label>
+                <input list="subgenreChoiceList" id="subgenreChoice" class="form-control w-100" placeholder="Select an option...">
+                <datalist id="subgenreChoiceList">
+                    <option value="Action and Adventure">
+                    <option value="Contemporary">
+                    <option value="Dystopian">
+                    <option value="Fantasy">
+                    <option value="High Fantasy">
+                    <option value="Low Fantasy">
+                    <option value="Urban Fantasy">
+                    <option value="Romantic Fantasy">
+                    <option value="Paranormal Fantasy">
+                    <option value="Historical Fiction">
+                    <option value="Horror">
+                    <option value="Folk Horror">
+                    <option value="Gothic Horror">
+                    <option value="Literary Fiction">
+                    <option value="Mystery/Crime">
+                    <option value="Detective Mysteries">
+                    <option value="Cozy Mysteries">
+                    <option value="Romance">
+                    <option value="Paranormal Romance">
+                    <option value="Historical Romance">
+                    <option value="Science Fiction">
+                    <option value="Military Sci-Fi">
+                    <option value="Space Opera">
+                    <option value="Alternate History">
+                    <option value="Thriller/Suspense">
+                    <option value="Western">
+                    <option value="Young Adult (YA)">
+                    <option value="Graphic Novel">
+                    <option value="Biography">
+                    <option value="Autobiography">
+                    <option value="Poetry">
+                    <option value="Shakespearean">
+                    <option value="Cookbooks">
+                    <option value="History">
+                    <option value="Memoir">
+                    <option value="Self-Help">
+                    <option value="True Crime">
+                </datalist>
+              </div>
+              <div class="w-200">
+                <label for="format" style="text-align: center; font-weight: 600;">Book Format<span class="error-label" id="format-label"></span></label>
+                <select name="format" id="formatChoice" class="form-control w-100">
+                  <option value="">Select an option...</option>
+                  <option value="Paperback">Paperback</option>
+                  <option value="Hardback">Hardback</option>
+                  <option value="Library Binding">Library Binding</option>
+                  <option value="Spiral Binding">Spiral Binding</option>
+                </select>
+              </div>
+              <div class="w-200">
+                <label for="edition" style="text-align: center; font-weight: 600;">Edition<span class="error-label" id="edt-label"></span></label>
+                <input type="number" name="edition" placeholder="0" class="form-control w-100" id="bookedition" min="0" >
+              </div>
+            </form>
+            <button class="btn btn-dark my-3" onclick="createBook()">Upload book</button>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="product-tabs">
-      <div class="container">
-        <div class="row">
-          <div class="tabs-listing">
-            <nav>
-              <div class="nav nav-tabs d-flex justify-content-center py-3" id="nav-tab" role="tablist">
-                <button class="nav-link text-capitalize active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true"> Book Description</button>
-                <button class="nav-link text-capitalize" id="nav-information-tab" data-bs-toggle="tab" data-bs-target="#nav-information" type="button" role="tab" aria-controls="nav-information" aria-selected="false" tabindex="-1">Additional information</button>
-              </div>
-            </nav>
-            <div class="tab-content border-bottom py-4" id="nav-tabContent">
-              <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                
-              </div>
-              <div class="tab-pane fade" id="nav-information" role="tabpanel" aria-labelledby="nav-information-tab">
-                
-              </div>
-            </div>
           </div>
         </div>
       </div>
     </section>
     </div>
-
     
     <script src="js/jquery-1.11.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
@@ -464,5 +510,5 @@
     <script type="text/javascript" src="js/script.js"></script>
     
     <!--Custom Script-->
-    <script src="js/script.js"></script>
+    <script src="js/lib-add-book.js"></script>
   </body>
