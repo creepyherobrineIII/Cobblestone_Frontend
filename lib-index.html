@@ -24,11 +24,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
   </head>
   <body>
-          <nav class="sidebar close" id="full-side">
+        <nav class="sidebar close" id="full-side">
            <section>
              <div class="image-text">
                 <div class="text header-text">
-                    <span class="comp-name">COBBLESTONE</span>
+                    <span class="comp-name">Cobblestone</span>
                 </div>
             </div>
 
@@ -157,36 +157,92 @@
     
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header border-bottom-0">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="tabs-listing">
-                    <nav>
-                        <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
-                        <button class="nav-link text-capitalize" id="nav-sign-in-tab" data-bs-toggle="tab" data-bs-target="#nav-sign-in" type="button" role="tab" aria-controls="nav-sign-in" aria-selected="true">Sign In</button>
-                        </div>
-                    </nav>
-                    <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade active show" id="nav-sign-in" role="tabpanel" aria-labelledby="nav-sign-in-tab">
-                        <div class="form-group py-3">
-                            <label class="mb-2" for="sign-in">Username or email address *</label>
-                            <input type="text" minlength="2" name="username" placeholder="Your Username" class="form-control w-100 rounded-3 p-3" id="loginEmail" required="">
-                        </div>
-                        <div class="form-group pb-3">
-                            <label class="mb-2" for="sign-in">Password *</label>
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header border-bottom-0">
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  <div class="tabs-listing">
+                                    <nav>
+                                      <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
+                                        <button class="nav-link text-capitalize active" id="nav-sign-in-tab" data-bs-toggle="tab" data-bs-target="#nav-sign-in" type="button" role="tab" aria-controls="nav-sign-in" aria-selected="true">Sign In</button>
+              
+                                      </div>
+                                    </nav>
+                                    <div class="tab-content" id="nav-tabContent">
+                                      <div class="tab-pane fade active show" id="nav-sign-in" role="tabpanel" aria-labelledby="nav-sign-in-tab">
+                                        <div class="form-group py-3">
+                                          <label class="mb-2" for="sign-in">Username or email address *</label>
+                                          <input type="text" minlength="2" name="username" placeholder="Your Username" class="form-control w-100 rounded-3 p-3" id="loginEmail" required="">
+                                        </div>
+                                        <div class="form-group pb-3">
+                                          <label class="mb-2" for="sign-in">Password *</label>
                                     <input type="password" minlength="2" name="password" placeholder="Your Password" class="form-control w-100 rounded-3 p-3" id="loginPass" required="">
-                        </div>
-<label class="py-3 error-label" id="logErrLab"></label>
-                        <button type="submit" onclick="userLog()" name="submit" class="btn btn-dark w-100 my-3">Login</button>
+                                        </div>
+                                        <label class="py-3 error-label" id="logErrLab"></label>
+                                        <button type="submit" onclick="userLog()" name="submit" class="btn btn-dark w-100 my-3">Login</button>
+                                      </div>
+                                      <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
+                                        <div class="form-group py-3">
+                                          <label class="mb-2" for="register">Your email address *</label>
+                                          <input type="text" minlength="2" name="username" placeholder="Your Email Address" class="form-control w-100 rounded-3 p-3" required="">
+                                        </div>
+                                        <div class="form-group pb-3">
+                                          <label class="mb-2" for="sign-in">Password *</label>
+                                    <input type="password" minlength="2" name="password" placeholder="Your Password" class="form-control w-100 rounded-3 p-3" id="loginPass" required="">
+                                        </div>
+                                        <label class="py-3">
+                                          <input type="checkbox" required="" class="d-inline">
+                                          <span class="label-body">I agree to the <a href="#" class="fw-bold">Privacy Policy</a></span>
+                                        </label>
+                                        <button type="submit" name="submit" class="btn btn-dark w-100 my-3">Register</button>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
+    <div id="main-content">
+    <div class="search-popup">
+      <div class="search-popup-container">
+
+        <form role="search" method="get" class="search-form" action="">
+          <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value="" name="s">
+          <button type="submit" class="search-submit"><svg class="search">
+              <use xlink:href="#search"></use>
+            </svg></button>
+        </form>
+
+        <h5 class="cat-list-title">Browse Categories</h5>
+
+        <ul class="cat-list">
+          <li class="cat-list-item">
+            <a href="#" title="Romance">Romance</a>
+          </li>
+          <li class="cat-list-item">
+            <a href="#" title="Thriller">Thriller</a>
+          </li>
+          <li class="cat-list-item">
+            <a href="#" title="Sci-fi">Sci-fi</a>
+          </li>
+          <li class="cat-list-item">
+            <a href="#" title="Cooking">Cooking</a>
+          </li>
+          <li class="cat-list-item">
+            <a href="#" title="Health">Health</a>
+          </li>
+          <li class="cat-list-item">
+            <a href="#" title="Lifestyle">Lifestyle</a>
+          </li>
+          <li class="cat-list-item">
+            <a href="#" title="Fiction">Fiction</a>
+          </li>
+        </ul>
+
+      </div>
     </div>
 
     <div class="logo-set">
@@ -197,22 +253,14 @@
         <a href="index.html" class="logo-small">Library</a>
       </div>
     </div>
+    
 
     <nav id="header-nav" class="navbar navbar-expand-lg py-3">
         <div class="container">
-        <div class="logo-text">
 
-        </div>
-        <header id="header" class="site-header">      
-          <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
-            <svg class="navbar-icon">
-              <use xlink:href="#navbar-icon"></use>
-            </svg>
-          </button>
+    <header id="header" class="site-header">
+      
           <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
-            <div class="offcanvas-header px-4 pb-0">
-              <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
-            </div>
             <div class="offcanvas-body">
               <ul id="navbar" class="navbar-nav text-uppercase justify-content-start justify-content-lg-center align-items-start align-items-lg-center flex-grow-1">
                 <li class="nav-item serach-nav">
@@ -282,90 +330,6 @@
                     </a>
                     <!-- Modal -->
                   </li>
-                  <li class="wishlist-dropdown dropdown pe-3">
-                    <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
-                      <svg class="wishlist">
-                        <use xlink:href="#heart"></use>
-                      </svg>
-                    </a>
-                    <div class="dropdown-menu animate slide dropdown-menu-start dropdown-menu-lg-end p-3">
-                      <h4 class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="text-primary">Your wishlist</span>
-                        <span class="badge bg-primary rounded-pill">2</span>
-                      </h4>
-                      <ul class="list-group mb-3">
-                        <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm">
-                          <div>
-                            <h5>
-                              <a href="single-product.html">The Emerald Crown</a>
-                            </h5>
-                            <small>Special discounted price.</small>
-                            <a href="#" class="d-block fw-medium text-capitalize mt-2">Add to cart</a>
-                          </div>
-                          <span class="text-primary">$2000</span>
-                        </li>
-                        <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm">
-                          <div>
-                            <h5>
-                              <a href="single-product.html">The Last Enchantment</a>
-                            </h5>
-                            <small>Perfect for enlightened people.</small>
-                            <a href="#" class="d-block fw-medium text-capitalize mt-2">Add to cart</a>
-                          </div>
-                          <span class="text-primary">$400</span>
-                        </li>
-                        <li class="list-group-item bg-transparent d-flex justify-content-between">
-                          <span class="text-capitalize"><b>Total (USD)</b></span>
-                          <strong>$1470</strong>
-                        </li>
-                      </ul>
-                      <div class="d-flex flex-wrap justify-content-center">
-                        <a href="#" class="w-100 btn btn-dark mb-1" type="submit">Add all to cart</a>
-                        <a href="cart.html" class="w-100 btn btn-primary" type="submit">View cart</a>
-                      </div>
-                    </div>
-                  </li>
-                  <li class="cart-dropdown dropdown">
-                    <a href="cart.html" class="dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false">
-                      <svg class="cart">
-                        <use xlink:href="#cart"></use>
-                      </svg><span class="fs-6 fw-light">(02)</span>
-                    </a>
-                    <div class="dropdown-menu animate slide dropdown-menu-start dropdown-menu-lg-end p-3">
-                      <h4 class="d-flex justify-content-between align-items-center mb-3">
-                        <span class="text-primary">Your cart</span>
-                        <span class="badge bg-primary rounded-pill">2</span>
-                      </h4>
-                      <ul class="list-group mb-3">
-                        <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm">
-                          <div>
-                            <h5>
-                              <a href="single-product.html">Secrets of the Alchemist</a>
-                            </h5>
-                            <small>High quality in good price.</small>
-                          </div>
-                          <span class="text-primary">$870</span>
-                        </li>
-                        <li class="list-group-item bg-transparent d-flex justify-content-between lh-sm">
-                          <div>
-                            <h5>
-                              <a href="single-product.html">Quest for the Lost City</a>
-                            </h5>
-                            <small>Professional Quest for the Lost City.</small>
-                          </div>
-                          <span class="text-primary">$600</span>
-                        </li>
-                        <li class="list-group-item bg-transparent d-flex justify-content-between">
-                          <span class="text-capitalize"><b>Total (USD)</b></span>
-                          <strong>$1470</strong>
-                        </li>
-                      </ul>
-                      <div class="d-flex flex-wrap justify-content-center">
-                        <a href="cart.html" class="w-100 btn btn-dark mb-1" type="submit">View Cart</a>
-                        <a href="checkout.html" class="w-100 btn btn-primary" type="submit">Go to checkout</a>
-                      </div>
-                    </div>
-                  </li>
                 </ul>
               </div>
             </div>
@@ -374,141 +338,125 @@
      </div>
     </nav>
 
-  <div id="main-content">
-    <section class="single-product padding-large">
+    <footer id="footer" class="padding-large">
       <div class="container">
         <div class="row">
-          <div class="col-lg-6">
-            <div class="d-flex gap-3 product-preview">
-              
-              <div class="swiper large-swiper border rounded-3 overflow-hidden swiper-fade swiper-initialized swiper-horizontal swiper-watch-progress swiper-backface-hidden">
-                <div class="swiper-wrapper" id="swiper-wrapper-b873626ddb1dc786" aria-live="polite">
-                  <div class="swiper-slide bg-white swiper-slide-active swiper-slide-visible swiper-slide-fully-visible" role="group" aria-label="1 / 3" style="transform: translate3d(0px, 0px, 0px); width: 512px; opacity: 1;" id="main-book-pic">
-                    <img src="images/add-image.png" alt="single-product" class="img-fluid" id="image-preview">
-                    <form action="" enctype="multipart/form-data">
-                      <label for="book-cover" id="bookpic-label">Select cover image*</label>
-                    <input type="file" name="book-cover" id="bookPic" accept="image/*" placeholder="" >
-                    </form>
+          <div class="footer-top-area">
+            <div class="row d-flex flex-wrap justify-content-between">
+              <div class="col-lg-3 col-sm-6 pb-3">
+                <div class="footer-menu">
+                <div class="logo-set">
+                    <div class="logo-div">
+                    <a href="index.html" class="logo" >COBBLESTONE</a>
+                    </div>
+                    <div class="logo-small-div">
+                        <a href="index.html" class="logo-small">Library</a>
+                    </div>
+                </div>
+                  <p>Nisi, purus vitae, ultrices nunc. Sit ac sit suscipit hendrerit. Gravida massa volutpat aenean odio
+                    erat nullam fringilla.</p>
+                  <div class="social-links">
+                    <ul class="d-flex list-unstyled">
+                      <li>
+                        <a href="#">
+                          <svg class="facebook">
+                            <use xlink:href="#facebook"></use>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <svg class="instagram">
+                            <use xlink:href="#instagram"></use>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <svg class="twitter">
+                            <use xlink:href="#twitter"></use>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <svg class="linkedin">
+                            <use xlink:href="#linkedin"></use>
+                          </svg>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <svg class="youtube">
+                            <use xlink:href="#youtube"></use>
+                          </svg>
+                        </a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
-              <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span><span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+              </div>
+              <div class="col-lg-2 col-sm-6 pb-3">
+                <div class="footer-menu text-capitalize">
+                  <h5 class="widget-title pb-2">Quick Links</h5>
+                  <ul class="menu-list list-unstyled text-capitalize">
+                    <li class="menu-item mb-1">
+                      <a href="#">Home</a>
+                    </li>
+                    <li class="menu-item mb-1">
+                      <a href="#">Library</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-lg-3 col-sm-6 pb-3">
+                <div class="footer-menu contact-item">
+                  <h5 class="widget-title text-capitalize pb-2">Contact Us</h5>
+                  <p>Do you have any queries or suggestions? <a href="mailto:" class="text-decoration-underline">yourinfo@gmail.com</a></p>
+                  <p>If you need support? Just give us a call. <a href="#" class="text-decoration-underline">+55 111 222
+                      333 44</a></p>
+                </div>
+              </div>
             </div>
-            </div>
-          </div>
-          <div class="col-lg-6">
-            <div class="inquiry-item col-lg-8">
-            <form id="form" class="d-flex gap-3 flex-wrap">
-              <div class="w-200">
-                <label for="ISBN" style="text-align: center; font-weight: 600;">ISBN* <span class="error-label" id="isbn-label"></span></label>
-                <input type="text" name="ISBN" placeholder="ISBN" class="form-control w-100" id="bookisbn">
-              </div>
-              <div class="w-200">
-                <label for="title" style="text-align: center; font-weight: 600;">Title* <span class="error-label" id="title-label"></span></label>
-                <input type="text" name="title" placeholder="Title" class="form-control w-100" id="booktitle">
-              </div>
-              <div class="w-200">
-                <label for="author" style="text-align: center; font-weight: 600;">Author* <span class="error-label" id="author-label"></span></label>
-                <input type="text" name="author" placeholder="Author" class="form-control w-100" id="bookauthor">
-              </div>
-              <div class="w-200">
-                <label for="publisher" style="text-align: center; font-weight: 600;">Publisher* <span class="error-label" id="publisher-label"></span></label>
-                <input type="text" name="publisher" placeholder="Publisher" class="form-control w-100" id="publisher">
-              </div>
-              <div class="w-200">
-                <label for="publishDate" style="text-align: center; font-weight: 600;">Publication Date* <span class="error-label" id="pubDate-label"></span></label>
-                <input type="date" name="publishDate" placeholder="Date of publish" class="form-control w-100" id="pubdate">
-              </div>
-              <div class="w-200">
-                <label for="description" style="text-align: center; font-weight: 600;">Description* <span class="error-label" id="desc-label"></span></label>
-                <textarea placeholder="Book Description" class="form-control w-100" id="bookdesc"></textarea>
-              </div>
-              <div class="w-200">
-                <label for="genre" style="text-align: center; font-weight: 600;">Genre* <span class="error-label" id="genre-label"></span></label>
-                <select name="genre" id="genreChoice" class="form-control w-100" placeholder="Genre">
-                  <option value="">Select an option...</option>
-                  <option value="Arts">Arts</option>
-                  <option value="Business & Finance">Business & Finance</option>
-                  <option value="Children's Books">Children's Books</option>
-                  <option value="Fiction">Fiction</option>
-                  <option value="Health & Wellness">Health & Wellness</option>
-                  <option value="Non-fiction">Non-fiction</option>
-                  <option value="Religious">Religious</option>
-                  <option value="Science, Technology & Mathematics">Science, Technology & Mathematics</option>
-                  <option value="Social Sciences">Social Sciences</option>
-                  <option value="Textbooks">Textbooks</option>
-                </select>
-              </div>
-              <div class="w-200">
-                <label for="subgenreChoice" style="text-align: center; font-weight: 600;">Subgenre* <span class="error-label" id="subgenre-label"></span></label>
-                <input list="subgenreChoiceList" id="subgenreChoice" class="form-control w-100" placeholder="Select an option...">
-                <datalist id="subgenreChoiceList">
-                    <option value="Action and Adventure">
-                    <option value="Contemporary">
-                    <option value="Dystopian">
-                    <option value="Fantasy">
-                    <option value="High Fantasy">
-                    <option value="Low Fantasy">
-                    <option value="Urban Fantasy">
-                    <option value="Romantic Fantasy">
-                    <option value="Paranormal Fantasy">
-                    <option value="Historical Fiction">
-                    <option value="Horror">
-                    <option value="Folk Horror">
-                    <option value="Gothic Horror">
-                    <option value="Literary Fiction">
-                    <option value="Mystery/Crime">
-                    <option value="Detective Mysteries">
-                    <option value="Cozy Mysteries">
-                    <option value="Romance">
-                    <option value="Paranormal Romance">
-                    <option value="Historical Romance">
-                    <option value="Science Fiction">
-                    <option value="Military Sci-Fi">
-                    <option value="Space Opera">
-                    <option value="Alternate History">
-                    <option value="Thriller/Suspense">
-                    <option value="Western">
-                    <option value="Young Adult (YA)">
-                    <option value="Graphic Novel">
-                    <option value="Biography">
-                    <option value="Autobiography">
-                    <option value="Poetry">
-                    <option value="Shakespearean">
-                    <option value="Cookbooks">
-                    <option value="History">
-                    <option value="Memoir">
-                    <option value="Self-Help">
-                    <option value="True Crime">
-                </datalist>
-              </div>
-              <div class="w-200">
-                <label for="format" style="text-align: center; font-weight: 600;">Book Format* <span class="error-label" id="format-label"></span></label>
-                <select name="format" id="formatChoice" class="form-control w-100">
-                  <option value="">Select an option...</option>
-                  <option value="Paperback">Paperback</option>
-                  <option value="Hardback">Hardback</option>
-                  <option value="Library Binding">Library Binding</option>
-                  <option value="Spiral Binding">Spiral Binding</option>
-                </select>
-              </div>
-              <div class="w-200">
-                <label for="edition" style="text-align: center; font-weight: 600;">Edition* <span class="error-label" id="edt-label"></span></label>
-                <input type="number" name="edition" placeholder="0" class="form-control w-100" id="bookedition" min="0" >
-              </div>
-            </form>
-            <button class="btn btn-dark my-3" onclick="createBook()">Upload book</button>
-          </div>
           </div>
         </div>
       </div>
-    </section>
+    </footer>
+    <hr>
+    <div id="footer-bottom" class="mb-2">
+      <div class="container">
+        <div class="d-flex flex-wrap justify-content-between">
+          <div class="ship-and-payment d-flex gap-md-5 flex-wrap">
+            <div class="shipping d-flex">
+              <p>We ship with:</p>
+              <div class="card-wrap ps-2">
+                <img src="images/dhl.png" alt="visa">
+                <img src="images/shippingcard.png" alt="mastercard">
+              </div>
+            </div>
+            <div class="payment-method d-flex">
+              <p>Payment options:</p>
+              <div class="card-wrap ps-2">
+                <img src="images/visa.jpg" alt="visa">
+                <img src="images/mastercard.jpg" alt="mastercard">
+                <img src="images/paypal.jpg" alt="paypal">
+              </div>
+            </div>
+          </div>
+          <div class="copyright">
+            <p>© Copyright 2024 Bookly. HTML Template by <a href="https://templatesjungle.com/" target="_blank">TemplatesJungle</a>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
-    
+    </div>
+
     <script src="js/jquery-1.11.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
     <script type="text/javascript" src="js/script.js"></script>
     
-    <!--Custom Script-->
-    <script src="js/lib-add-book.js"></script>
-  </body>
+
+</body>
+</html>

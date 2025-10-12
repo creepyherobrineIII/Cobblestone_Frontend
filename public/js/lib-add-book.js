@@ -82,44 +82,165 @@ InputObj.bookisbn.addEventListener('input', function(){
     let ISBNcheck = ISBNReg.test(isbn_val);
     
    if(isbn_val.length !== 13 || !ISBNcheck){
-    labelObj.isbnlabel.textContent = '(Invalid ISBN Number)';
-    this.classList.toggle("invalid-box", true);
-    boolObj.validISBN = false;
+        labelObj.isbnlabel.textContent = '(Invalid ISBN Number)';
+        this.classList.toggle("invalid-box", true);
+        boolObj.validISBN = false;
    }else{
-    labelObj.isbnlabel.textContent = '';
-    this.classList.toggle("invalid-box", false);
-    boolObj.validISBN = true;
+        labelObj.isbnlabel.textContent = '';
+        this.classList.toggle("invalid-box", false);
+        boolObj.validISBN = true;
    };
 });
 
 //Book Title data validation
 InputObj.booktitle.addEventListener('input', function(){
-    let book_title = this.value;
+    let book_title = this.value.toString();
 
     if(book_title.trim() === ""){
-        
+        labelObj.titlelabel.textContent = '(Field cannot be empty)';
+        this.classList.toggle("invalid-box", true);
+        boolObj.validBookTitle = false;
     }else{
-        
+        labelObj.titlelabel.textContent = '';
+        this.classList.toggle("invalid-box", false);
+        boolObj.validBookTitle = true;
     }
 });
 
 //Book author data validation
 InputObj.bookauthor.addEventListener('input', function(){
-    let book_author = this.value;
+    let book_author = this.value.toString();
 
     if(book_author.trim() === ""){
-        
+        labelObj.authorlabel.textContent = "(Field cannot be empty)";
+        this.classList.toggle("invalid-box", true);
+        boolObj.validAuthor = false;
     }else{
-
+        labelObj.authorlabel.textContent = "";
+        this.classList.toggle("invalid-box", false);
+        boolObj.validAuthor = true;
     }
 
 });
+
+//Book publisher data validation
+InputObj.publisher.addEventListener('input', function(){
+    let book_publisher = this.value.toString();
+
+    if(book_publisher.trim() === ""){
+        labelObj.publisherlabel.textContent = "(Field cannot be empty)";
+        this.classList.toggle("invalid-box", true);
+        boolObj.validPublisher = false;
+    }else{
+        labelObj.publisherlabel.textContent = "";
+        this.classList.toggle("invalid-box", false);
+        boolObj.validPublisher = true;
+    }
+
+});
+
+
+//Book publication date data validation
+InputObj.pubdate.addEventListener('input', function(){
+    let book_pubDate = this.value.toString();
+
+    if(book_pubDate.trim() === ""){
+        labelObj.pubdatelabel.textContent = "(Field cannot be empty)";
+        this.classList.toggle("invalid-box", true);
+        boolObj.validPubDate = false;
+    }else{
+        labelObj.pubdatelabel.textContent = "";
+        this.classList.toggle("invalid-box", false);
+        boolObj.validPubDate = true;
+    }
+
+});
+
+//Book description data validation
+InputObj.bookdesc.addEventListener('input', function(){
+    let book_desc = this.value.toString();
+
+    if(book_desc.trim() === ""){
+        labelObj.desclabel.textContent = "(Field cannot be empty)";
+        this.classList.toggle("invalid-box", true);
+        boolObj.validDescription = false;
+    }else{
+        labelObj.desclabel.textContent = "";
+        this.classList.toggle("invalid-box", false);
+        boolObj.validDescription = true;
+    }
+
+});
+
+//Book Genre data validation
+InputObj.genreChoice.addEventListener('input', function(){
+    let book_genre = this.value.toString();
+
+    if(book_genre.trim() === ""){
+        labelObj.genrelabel.textContent = "(Field cannot be empty)";
+        this.classList.toggle("invalid-box", true);
+        boolObj.validGenre = false;
+    }else{
+        labelObj.genrelabel.textContent = "";
+        this.classList.toggle("invalid-box", false);
+        boolObj.validGenre = true;
+    }
+
+});
+
+//Book subgenre data validation
+InputObj.subgenreChoice.addEventListener('input', function(){
+    let book_subgenre = this.value.toString();
+
+    if(book_subgenre.trim() === ""){
+        labelObj.subgenrelabel.textContent = "(Field cannot be empty)";
+        this.classList.toggle("invalid-box", true);
+        boolObj.validSubgenre = false;
+    }else{
+        labelObj.subgenrelabel.textContent = "";
+        this.classList.toggle("invalid-box", false);
+        boolObj.validSubgenre = true;
+    }
+
+});
+
 
 //Preview image
 InputObj.bookpic.addEventListener('change', function(){
     imagePrev.src = URL.createObjectURL(InputObj.bookpic.files[0]);
 });
 
+//Book format data validation
+InputObj.formatChoice.addEventListener('input', function(){
+    let book_format = this.value.toString();
+
+    if(book_format.trim() === ""){
+     labelObj.bookformatlabel.textContent = "(Field cannot be empty)";
+        this.classList.toggle("invalid-box", true);
+        boolObj.validFormat = false;
+    }else{
+        labelObj.bookformatlabel.textContent = "";
+        this.classList.toggle("invalid-box", false);
+        boolObj.validFormat= true;
+    }
+
+});
+
+//Book edition data validation
+InputObj.bookEdition.addEventListener('input', function(){
+    let book_edition = this.value.toString();
+
+    if(book_edition.trim() === ""){
+        labelObj.editionlabel.textContent = "(Field cannot be empty)";
+        this.classList.toggle("invalid-box", true);
+        boolObj.validEdition = false;
+    }else{
+        labelObj.editionlabel.textContent = "";
+        this.classList.toggle("invalid-box", false);
+        boolObj.validEdition = true;
+    }
+
+});
 
 //Get ordinal number edition
 function convertToOrd(i){
