@@ -397,7 +397,7 @@
           </div>
           <div class="col-lg-6">
             <div class="inquiry-item col-lg-8">
-            <form id="form" class="d-flex gap-3 flex-wrap">
+            <form id="form-add-book" class="d-flex gap-3 flex-wrap">
               <div class="w-200">
                 <label for="ISBN" style="text-align: center; font-weight: 600;">ISBN* <span class="error-label" id="isbn-label"></span></label>
                 <input type="text" name="ISBN" placeholder="ISBN" class="form-control w-100" id="bookisbn">
@@ -496,7 +496,7 @@
                 <input type="number" name="edition" placeholder="0" class="form-control w-100" id="bookedition" min="0" >
               </div>
             </form>
-            <button class="btn btn-dark my-3" onclick="createBook()">Upload book</button>
+            <button class="btn btn-dark my-3" onclick="createBook()" id="createButton">Upload book</button>
           </div>
           </div>
         </div>

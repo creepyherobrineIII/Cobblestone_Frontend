@@ -17,6 +17,11 @@ let InputObj ={
     bookEdition: null
 }
 
+const formAddBook = document.getElementById("form-add-book");
+
+formAddBook.addEventListener('submit', async (event) =>{
+    event.preventDefault();
+})
 
 InputObj.bookisbn = document.getElementById("bookisbn");
 InputObj.booktitle = document.getElementById("booktitle");
@@ -259,6 +264,13 @@ function convertToOrd(i){
     return suffix;
 }
 
+//Button event listener
+const addBookButton = document.getElementById("createButton");
+
+addBookButton.addEventListener('click', async (event) =>{
+    event.preventDefault();
+})
+
 async function createBook(){
 
     //Arrays for checking flags and adjusting form error handling
@@ -308,17 +320,11 @@ async function createBook(){
         }
     }
 
-    
-    allPass = boolArray.every(flag => flag === true);
-    console.log("Conditions:", allPass);
-    console.log("All not empty: ", allNotEmpty);
+    /* let imageResData = null;
+        let imageData = new FormData();
+        imageData.append('book-cover', InputObj.bookpic.files[0]);
 
-    if(allPass === true && allNotEmpty == true){
-        let imageResData = null;
-        const imageData = new FormData();
-        imageData.append('image', InputObj.bookpic.files[0]);
-
-        fetch('/server/catalogue', {
+        imageResData = await fetch('http://localhost:3000/server/catalogue', {
                 method: 'POST',
                 body: imageData,
             }).then(response =>{
@@ -330,27 +336,31 @@ async function createBook(){
                 return response.json()
             }).then(data =>{
                 if (data !== null){
-                    imageResData = data;
+                     return data.json();
                 }
             }).catch(error =>{
                 alert('Error:' ,error)
-            })
+            }); */
+    allPass = boolArray.every(flag => flag === true);
+    console.log("Conditions:", allPass);
+    console.log("All not empty: ", allNotEmpty);
 
+    if(allPass === true && allNotEmpty == true){
+       
         const data = {
+        //Add book inven dumbass >:(
         ISBN: InputObj.bookisbn.value,
         bookTitle: InputObj.booktitle.value,
         author: InputObj.bookauthor.value,
-        publisher: InputObj.publisher.value,
-        pubDate: InputObj.pubdate.value,
-        bookDescription: InputObj.bookdesc.value,
         genre: InputObj.genreChoice.value,
         subgenre: InputObj.subgenreChoice.value,
-        picture: imageResData.path,
-        bookFormat: InputObj.formatChoice.value,
-        edition: convertToOrd(InputObj.bookEdition.value)
+        pubDate: InputObj.pubdate.value,
+        edition: convertToOrd(InputObj.bookEdition.value),
+        publisher: InputObj.publisher.value,
+        bookDescription: InputObj.bookdesc.value,
+        picture: imageResData.destination + '/' + imageResData.filename,
+        bookFormat: InputObj.formatChoice.value
     }
-
-        console.log(data);
 
         fetch(newBookURL, {
         method: 'POST',
@@ -367,11 +377,7 @@ async function createBook(){
         })
         .then(data => {
             console.log(data);
-            data.userType = 'Member'
-            localStorage.setItem('loggedUser', JSON.stringify(data));
-
-
-            //Load window with logged profile
+            
 
             //Deallocating memory
             //Arrays
