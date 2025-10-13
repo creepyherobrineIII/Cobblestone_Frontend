@@ -1447,6 +1447,19 @@ section .image-text .header-text{
   font-size: 1rem;
 }
 
+/*--------Pagination Styling------------*/
+.form-pagination{
+  margin-top: 30px;
+}
+
+.form-pagination button:hover{
+  color: var(--side-hover-color);
+}
+
+#add-book-1{
+  transition: var(--tran-05);
+}
+
 /* 4.2 Billboard
 /*----------------------------------------------*/
 /*------------Swiper Arrow -----------*/

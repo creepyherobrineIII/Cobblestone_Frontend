@@ -20,7 +20,7 @@ const pfpUpload = multer({dest: 'public/images/user_pfps'});
 
 app.post('/server/catalogue', catalogueUpload.single('book-cover'), function(req, res, next){
     if (req.file !== null){
-        console.log(req.file);
+        console.log(req.file)
         res.status(201).json(req.file);
     }else{
         res.status(400).json('Failed to upload cover image');

@@ -364,7 +364,7 @@ function changeSidebar(userType){
       BodyObj.fullSideMenu.style.removeProperty('display');
       BodyObj.userIcon.style.display = 'none';
       BodyObj.sideMenuList.innerHTML = `<li class="sm-nav-link">
-                            <a href="#">
+                            <a href="index.html">
                                 <i class="ri-home-3-line icon"></i>
                                 <span class="text sm-nav-text">Home</span>
                             </a>

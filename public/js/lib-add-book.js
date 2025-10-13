@@ -14,7 +14,8 @@ let InputObj ={
     subgenreChoice: null,
     bookpic: null,
     formatChoice: null,
-    bookEdition: null
+    bookEdition: null,
+    numCopies: null
 }
 
 const formAddBook = document.getElementById("form-add-book");
@@ -33,7 +34,8 @@ InputObj.genreChoice = document.getElementById("genreChoice");
 InputObj.subgenreChoice = document.getElementById("subgenreChoice");
 InputObj.bookpic = document.getElementById("bookPic"); 
 InputObj.formatChoice = document.getElementById("formatChoice"); 
-InputObj.bookEdition = document.getElementById("bookedition"); 
+InputObj.bookEdition = document.getElementById("bookedition");
+InputObj.numCopies = document.getElementById("bookCopies") 
 
 //Label object (for mem management and boolean checking)
 let labelObj ={
@@ -47,7 +49,8 @@ let labelObj ={
     subgenrelabel: null,
     bookpiclabel: null,
     bookformatlabel: null,
-    editionlabel: null
+    editionlabel: null,
+    copieslabel: null
 }
 
 
@@ -61,7 +64,8 @@ labelObj.genrelabel = document.getElementById("genre-label");
 labelObj.subgenrelabel = document.getElementById("subgenre-label"); 
 labelObj.bookpiclabel = document.getElementById("bookpic-label"); 
 labelObj.bookformatlabel = document.getElementById("format-label");
-labelObj.editionlabel = document.getElementById("edt-label"); 
+labelObj.editionlabel = document.getElementById("edt-label");
+labelObj.copieslabel = document.getElementById("copies-label") 
 
 
 let boolObj ={
@@ -75,7 +79,8 @@ let boolObj ={
     validSubgenre: true,
     validBookPic: true,
     validFormat: true,
-    validEdition: true
+    validEdition: true,
+    validNumCopies: true
 }
 
 //Event listeners for data validation
@@ -271,12 +276,51 @@ addBookButton.addEventListener('click', async (event) =>{
     event.preventDefault();
 })
 
+//Number of copies data validation
+InputObj.numCopies.addEventListener('input', function(){
+    let num_copies = this.value.toString();
+
+    if (num_copies.trim() === ""){
+        labelObj.copieslabel.textContent = "(Field must not be empty)";
+        this.classList.toggle("invalid-box", true);
+        boolObj.validNumCopies = false;
+    }else{
+        labelObj.copieslabel.textContent = "";
+        this.classList.toggle("invalid-box", false);
+        boolObj.validNumCopies = true;
+    }
+})
+
+//Pagination
+const prevButton = document.getElementById("prev-button");
+const nextButton = document.getElementById("next-button");
+const bookTab1 = document.getElementById("add-book-1");
+const bookTab2 = document.getElementById("add-book-2");
+
+
+prevButton.addEventListener('click', function(){
+    bookTab1.style.removeProperty('display');
+    bookTab2.style.display = 'none';
+    addBookButton.style.display = 'none';
+    prevButton.style.display = 'none';
+    nextButton.style.removeProperty('display');
+});
+
+nextButton.addEventListener('click', function(){
+    nextButton.style.display = 'none';
+    prevButton.style.removeProperty('display')
+    bookTab2.style.removeProperty('display');
+    addBookButton.style.removeProperty('display');
+    bookTab1.style.display = 'none';
+
+})
+
 async function createBook(){
 
     //Arrays for checking flags and adjusting form error handling
-    let boolArray = [boolObj.validISBN, boolObj.validBookTitle, boolObj.validAuthor, boolObj.validPublisher, boolObj.validPubDate,boolObj.validDescription, boolObj.validGenre, boolObj.validSubgenre, boolObj.validBookPic, boolObj.validFormat, boolObj.validEdition];
-    let formArray = [InputObj.bookisbn, InputObj.booktitle, InputObj.bookauthor, InputObj.publisher, InputObj.pubdate, InputObj.bookdesc, InputObj.genreChoice, InputObj.subgenreChoice, InputObj.bookpic, InputObj.formatChoice, InputObj.bookEdition]
-    let labelArray = [labelObj.isbnlabel, labelObj.titlelabel, labelObj.authorlabel, labelObj.publisherlabel, labelObj.pubdatelabel, labelObj.desclabel, labelObj.genrelabel, labelObj.subgenrelabel, labelObj.bookpiclabel, labelObj.bookformatlabel, labelObj.editionlabel]
+    let boolArray = [boolObj.validISBN, boolObj.validBookTitle, boolObj.validAuthor, boolObj.validPublisher, boolObj.validPubDate,boolObj.validDescription, boolObj.validGenre, boolObj.validSubgenre, boolObj.validBookPic, boolObj.validFormat, boolObj.validEdition, boolObj.validNumCopies];
+    let formArray = [InputObj.bookisbn, InputObj.booktitle, InputObj.bookauthor, InputObj.publisher, InputObj.pubdate, InputObj.bookdesc, InputObj.genreChoice, InputObj.subgenreChoice, InputObj.bookpic, InputObj.formatChoice, InputObj.bookEdition, InputObj.numCopies]
+    let labelArray = [labelObj.isbnlabel, labelObj.titlelabel, labelObj.authorlabel, labelObj.publisherlabel, labelObj.pubdatelabel, labelObj.desclabel, labelObj.genrelabel, labelObj.subgenrelabel, labelObj.bookpiclabel, labelObj.bookformatlabel, labelObj.editionlabel, labelObj.copieslabel]
     let allNotEmpty = true;
     let allPass = null;
     let inputEle = null;
@@ -320,35 +364,38 @@ async function createBook(){
         }
     }
 
-    /* let imageResData = null;
-        let imageData = new FormData();
-        imageData.append('book-cover', InputObj.bookpic.files[0]);
+    
 
-        imageResData = await fetch('http://localhost:3000/server/catalogue', {
-                method: 'POST',
-                body: imageData,
-            }).then(response =>{
-                if (response.status !== 201)
-                {
-                    throw new Error('Unable to upload image');
-                }
 
-                return response.json()
-            }).then(data =>{
-                if (data !== null){
-                     return data.json();
-                }
-            }).catch(error =>{
-                alert('Error:' ,error)
-            }); */
     allPass = boolArray.every(flag => flag === true);
     console.log("Conditions:", allPass);
     console.log("All not empty: ", allNotEmpty);
 
     if(allPass === true && allNotEmpty == true){
+        let imageResData = null;
+        let imageData = new FormData();
+        imageData.append('book-cover', InputObj.bookpic.files[0]);
+        
+        let imageFile = await fetch('http://localhost:3000/server/catalogue', {
+            method: 'POST',
+            body: imageData,
+        }).then(response =>{
+            if (response.status !== 201)
+            {
+                throw new Error('Unable to upload image');
+            }
+
+            return response.json()
+        }).then(data =>{
+            if (data !== null){
+                imageResData = data;
+            }
+        }).catch(error =>{
+            alert('Error:' ,error);
+        });
+
        
         const data = {
-        //Add book inven dumbass >:(
         ISBN: InputObj.bookisbn.value,
         bookTitle: InputObj.booktitle.value,
         author: InputObj.bookauthor.value,
@@ -358,8 +405,12 @@ async function createBook(){
         edition: convertToOrd(InputObj.bookEdition.value),
         publisher: InputObj.publisher.value,
         bookDescription: InputObj.bookdesc.value,
-        picture: imageResData.destination + '/' + imageResData.filename,
-        bookFormat: InputObj.formatChoice.value
+        picture: 'images/catalogue/'+ imageResData.filename,
+        bookFormat: InputObj.formatChoice.value,
+        BookInventory:{
+            availableCopies: InputObj.numCopies.value,
+            totalCopies: InputObj.numCopies.value
+        }
     }
 
         fetch(newBookURL, {
@@ -367,7 +418,7 @@ async function createBook(){
         headers: {
             'Content-Type': 'application/json',
         },
-        body:JSON.stringify(data)})
+        body: JSON.stringify(data),})
         .then(response => {
             if (!response.ok){
                 throw new Error(response.statusText);
@@ -376,8 +427,9 @@ async function createBook(){
             return response.json();
         })
         .then(data => {
+            alert('Uploaded book successfully!');
             console.log(data);
-            
+            window.location.href = "lib-index.html";
 
             //Deallocating memory
             //Arrays
@@ -390,7 +442,6 @@ async function createBook(){
             InputObj = null;
             labelObj = null;
 
-            alert('Uploaded book successfully!');
         })
         .catch(error => {
             alert(error);

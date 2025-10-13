@@ -398,10 +398,7 @@
           <div class="col-lg-6">
             <div class="inquiry-item col-lg-8">
             <form id="form-add-book" class="d-flex gap-3 flex-wrap">
-              <div class="w-200">
-                <label for="ISBN" style="text-align: center; font-weight: 600;">ISBN* <span class="error-label" id="isbn-label"></span></label>
-                <input type="text" name="ISBN" placeholder="ISBN" class="form-control w-100" id="bookisbn">
-              </div>
+              <div class="form-tab-book-1" id="add-book-1">
               <div class="w-200">
                 <label for="title" style="text-align: center; font-weight: 600;">Title* <span class="error-label" id="title-label"></span></label>
                 <input type="text" name="title" placeholder="Title" class="form-control w-100" id="booktitle">
@@ -411,16 +408,25 @@
                 <input type="text" name="author" placeholder="Author" class="form-control w-100" id="bookauthor">
               </div>
               <div class="w-200">
+                <label for="ISBN" style="text-align: center; font-weight: 600;">ISBN* <span class="error-label" id="isbn-label"></span></label>
+                <input type="text" name="ISBN" placeholder="ISBN" class="form-control w-100" id="bookisbn">
+              </div>
+
+
+              <div class="w-200">
+                <label for="description" style="text-align: center; font-weight: 600;">Description* <span class="error-label" id="desc-label"></span></label>
+                <textarea placeholder="Book Description" class="form-control w-100" id="bookdesc"></textarea>
+              </div>
+
+              </div>
+              <div class="form-tab-book-2" style="display: none" id="add-book-2">
+                <div class="w-200">
                 <label for="publisher" style="text-align: center; font-weight: 600;">Publisher* <span class="error-label" id="publisher-label"></span></label>
                 <input type="text" name="publisher" placeholder="Publisher" class="form-control w-100" id="publisher">
               </div>
               <div class="w-200">
                 <label for="publishDate" style="text-align: center; font-weight: 600;">Publication Date* <span class="error-label" id="pubDate-label"></span></label>
                 <input type="date" name="publishDate" placeholder="Date of publish" class="form-control w-100" id="pubdate">
-              </div>
-              <div class="w-200">
-                <label for="description" style="text-align: center; font-weight: 600;">Description* <span class="error-label" id="desc-label"></span></label>
-                <textarea placeholder="Book Description" class="form-control w-100" id="bookdesc"></textarea>
               </div>
               <div class="w-200">
                 <label for="genre" style="text-align: center; font-weight: 600;">Genre* <span class="error-label" id="genre-label"></span></label>
@@ -495,8 +501,19 @@
                 <label for="edition" style="text-align: center; font-weight: 600;">Edition* <span class="error-label" id="edt-label"></span></label>
                 <input type="number" name="edition" placeholder="0" class="form-control w-100" id="bookedition" min="0" >
               </div>
+              <div class="w-200">
+                <label for="availableCopies" style="text-align: center; font-weight: 600;">Number of Copies*  <span class="error-label" id="copies-label"></span></label>
+                <input type="number" name="availableCopies" placeholder="0" class="form-control w-100" id="bookCopies" min="0" >
+              </div>
+              </div>
+                 
             </form>
-            <button class="btn btn-dark my-3" onclick="createBook()" id="createButton">Upload book</button>
+            <div class="form-pagination">
+                <button class="btn btn-dark my-3" id="prev-button" style="display: none;">Prev</button>
+                <button class="btn btn-dark my-3"id="next-button">Next</button>
+                <button class="btn btn-dark my-3" onclick="createBook()" id="createButton" style="display: none;">Upload book</button>
+              </div>
+            
           </div>
           </div>
         </div>

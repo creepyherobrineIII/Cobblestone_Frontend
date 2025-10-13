@@ -54,7 +54,7 @@ window.addEventListener('load', function(){
 
     if (selectedBook.availableCopies === 0 )
     {
-        reserveButton.classList.toggle('disabled', true);
+        reserveButton.pr;
     }else{
         reserveButton.classList.toggle('disabled', false);
     }
