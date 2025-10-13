@@ -1460,6 +1460,15 @@ section .image-text .header-text{
   transition: var(--tran-05);
 }
 
+/*--------Reservation Search--------------*/
+.search-input {
+    height: 50px;
+    border-radius: 30px;
+    padding-left: 35px;
+    border: 0.2px solid black;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
 /* 4.2 Billboard
 /*----------------------------------------------*/
 /*------------Swiper Arrow -----------*/
