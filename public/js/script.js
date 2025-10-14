@@ -232,7 +232,6 @@ window.addEventListener('load', function(){
     }).catch(()=>{
         alert('Could not get catalogue');
     })
-  
 
   //Get logged user
   if (localStorage.getItem('loggedUser') !== null){
@@ -242,6 +241,7 @@ window.addEventListener('load', function(){
     let userT = user.userType;
 
     changeSidebar(userT);
+
   }else{
     changeSidebar('Not logged');
   }
@@ -288,6 +288,19 @@ async function userLog(){
 
     BodyObj.logErrLab.textContent = error.toString();
   })
+
+  //Change window to app pages
+  let loggedUser = localStorage.getItem('loggedUser');
+  var logUser = JSON.parse(loggedUser);
+  let userT = logUser.userType;
+
+    changeSidebar(userT);
+
+    if(userT === 'Member'){
+      window.location.href = 'index.html';
+    } else{
+      window.location.href = 'lib-index.html'
+    }
 }
 
 //Function to change sidebar depending on usertype
@@ -401,7 +414,9 @@ function changeSidebar(userType){
 
     case 'Not logged':{
       BodyObj.userIcon.style = '';
-      BodyObj.fullSideMenu.style.display = 'none'
+      BodyObj.fullSideMenu.style.display = 'none';
+      BodyObj.fullSideMenu.classList.toggle('sidebar', false);
+      BodyObj.fullSideMenu.classList.toggle('close', false);
       break;
     };
 
@@ -412,6 +427,17 @@ function changeSidebar(userType){
 
 }
 
+function logout(){
+  const logResp = confirm('Are you sure of logging out?')
+
+  if (logResp){
+    localStorage.setItem('loggedUser', null);
+
+    changeSidebar('Not logged');
+
+    window.location.reload(true);
+  }
+}
 /*function toggleNewUserIconDrop(){
   newUserDropdown.
 }*/

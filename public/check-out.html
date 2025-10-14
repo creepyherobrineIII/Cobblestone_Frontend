@@ -330,6 +330,14 @@
                     </a>
                     <!-- Modal -->
                   </li>
+                  <li class="pe-3">
+                    <div class="dropdown">
+                      <i class="ri-account-circle-2-line  dropdown-toggle"id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>  
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <a class="dropdown-item" href="#" onclick="logout()">Logout</a>
+                        </div>
+                    </div>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -356,7 +364,7 @@
       </div>
     </section>
 
-    <section id="reservation-table" class="h-75">
+    <section id="reservation-table" class="h-100">
       <!--Search Bar-->
       <div class="mt-3">
         <div class="row justify-content-center">
@@ -369,8 +377,11 @@
       </div>
       </div>
       
+     <div class="w-100 text-center text-dark h-25">
+       <label class="p-4" id="search-label"></label>
+     </div>
       <!--Nested table-->
-      <div id="res-nest-table" class="mt-5 w-75 mx-auto d-none">
+      <div id="res-nest-table" class="mt-1 w-75 mx-auto d-none">
         <table class="table table-bordered border-1">
           <thead>
             <tr class="table-dark">
@@ -402,7 +413,7 @@
           <tfoot>
             <tr>
               <td class="d-flex justify-content-end">
-                <button class="btn btn-dark">Check out books</button>
+                <button class="btn btn-dark" onclick="createLoans()">Check out books</button>
               </td>
             </tr>
           </tfoot>
