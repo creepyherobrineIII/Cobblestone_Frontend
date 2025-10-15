@@ -317,6 +317,39 @@ nextButton.addEventListener('click', function(){
 
 })
 
+window.addEventListener('load', function(){
+     //Get ISBN
+    const urlString = window.location.search;
+    const urlParamObj = new URLSearchParams(urlString);
+    let bookISBN = urlParamObj.get('isbn');
+    console.log(bookISBN);
+    bookCatalogue = JSON.parse(localStorage.getItem('libraryBooks'));
+
+    if (bookCatalogue !== null){
+        for (let i = 0; i < bookCatalogue.length; i++){
+            if (bookCatalogue[i].ISBN === bookISBN){
+                selectedBook = bookCatalogue[i];
+            }
+        }
+    };
+
+    if (selectedBook !== null){
+        //Adding book details to page
+        imagePrev.src = selectedBook.picture;
+        InputObj.bookisbn.value = selectedBook.ISBN;
+        InputObj.booktitle.value = selectedBook.bookTitle;
+        InputObj.bookauthor.value = selectedBook.author;
+        InputObj.publisher.value = selectedBook.publisher;
+        InputObj.pubdate.value = selectedBook.pubDate;
+        InputObj.bookdesc.value  = selectedBook.bookDescription;
+        InputObj.genreChoice.value = selectedBook.genre;
+        InputObj.subgenreChoice.value = selectedBook.subgenre;
+        InputObj.formatChoice.value = selectedBook.bookFormat;
+        InputObj.bookEdition.value = selectedBook.edition;
+        InputObj.numCopies.value = selectedBook.BookInventory.totalCopies;
+    }
+})
+
 async function createBook(){
 
     //Arrays for checking flags and adjusting form error handling
