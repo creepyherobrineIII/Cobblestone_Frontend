@@ -21,25 +21,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap" rel="stylesheet">
   </head>
   <body>
-        <nav class="sidebar close" id="full-side">
-           <section>
-             <div class="image-text">
-                <div class="text header-text">
-                    <span class="comp-name">Cobblestone</span>
-                </div>
-            </div>
-
-            <i class="ri-arrow-right-s-line toggle"></i>
-           </section>
-
-           <div class="side-menu-bar" id="side-menu-bar">
-                <div class="side-menu">
-                    <ul class="side-menu-links" id="side-menu-list">
-                    </ul>
-                </div>
-            </div>
-          </nav>
-
      <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
       <symbol id="search" xmlns="http://www.w3.org/2000/symbolsvg" viewBox="0 0 24 24">
         <path fill="currentColor" fill-rule="evenodd" d="M11.5 2.75a8.75 8.75 0 1 0 0 17.5a8.75 8.75 0 0 0 0-17.5M1.25 11.5c0-5.66 4.59-10.25 10.25-10.25S21.75 5.84 21.75 11.5c0 2.56-.939 4.902-2.491 6.698l3.271 3.272a.75.75 0 1 1-1.06 1.06l-3.272-3.271A10.21 10.21 0 0 1 11.5 21.75c-5.66 0-10.25-4.59-10.25-10.25" clip-rule="evenodd"></path>
@@ -123,37 +104,142 @@
     </svg>
 
     <div id="preloader" class="preloader-container hide-preloader">
-      <div class="book">
-        <div class="inner">
-          <div class="left"></div>
-          <div class="middle"></div>
-          <div class="right"></div>
+          <div class="book">
+            <div class="inner">
+              <div class="left"></div>
+              <div class="middle"></div>
+              <div class="right"></div>
+            </div>
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </div>
         </div>
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </div>
+
+    <div class="search-popup">
+        <div class="search-popup-container">
+
+          <form role="search" method="get" class="search-form" action="">
+            <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value="" name="s">
+            <button type="submit" class="search-submit"><svg class="search"><use xlink:href="#search"></use></svg></button>
+          </form>
+
+          <h5 class="cat-list-title">Browse Categories</h5>
+          
+      <ul class="cat-list">
+        <li class="cat-list-item">
+          <a href="#" title="Romance">Romance</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Thriller">Thriller</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Sci-fi">Sci-fi</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Cooking">Cooking</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Health">Health</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Lifestyle">Lifestyle</a>
+        </li>
+        <li class="cat-list-item">
+          <a href="#" title="Fiction">Fiction</a>
+        </li>
+      </ul>
+
+        </div>
     </div>
     
-
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <header id="header" class="site-header">
+      <nav id="header-nav" class="navbar navbar-expand-lg py-3">
+        <div class="container">
+          <a href="index.html" class="navbar-brand">
+              <span class="logo" >COBBLESTONE<span>
+          </a>
+          <button class="navbar-toggler d-flex d-lg-none order-3 p-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#bdNavbar" aria-controls="bdNavbar" aria-expanded="false" aria-label="Toggle navigation">
+            <svg class="navbar-icon">
+              <use xlink:href="#navbar-icon"></use>
+            </svg>
+          </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
+            <div class="offcanvas-header px-4 pb-0">
+                <div class="navbar-brand">
+                  <div class="logo-div">
+                  <a href="index.html" class="logo" >COBBLESTONE</a>
+                  </div>
+                </div>
+              <button type="button" class="btn-close btn-close-black" data-bs-dismiss="offcanvas" aria-label="Close" data-bs-target="#bdNavbar"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul id="navbar-element" class="navbar-nav text-uppercase justify-content-start justify-content-lg-center align-items-start align-items-lg-center flex-grow-0 w-75">
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="library.html">Library</a>
+                </li>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="sign-up.html">Sign-Up</a>
+                </li>
+                <li class="nav-item dropdown d-none" id="account-drop">
+                  <a class="nav-link me-4 dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Account</a>
+                  <ul class="dropdown-menu animate slide border">
+                    <li>
+                      <a href="about.html" class="dropdown-item fw-light">Reservations</a>
+                    </li>
+                    <li>
+                      <a href="library.html" class="dropdown-item fw-light">Loans</a>
+                    </li>
+                    <li>
+                      <a href="single-product.html" class="dropdown-item fw-light">Fees</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="user-items d-flex justify-content-end w-25">
+                <ul class="d-flex justify-content-end list-unstyled mb-0">
+                  <li class="search-item pe-3" id="main-search">
+                    <a href="#" class="search-button">
+                      <svg class="search">
+                        <use xlink:href="#search"></use>
+                      </svg>
+                    </a>
+                  </li>
+                  <li class="pe-3 dropdown">
+                    <a class="nav-link me-4 dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">
+                      <svg class="user">
+                        <use xlink:href="#user"></use>
+                      </svg>
+                    </a>
+                    <ul class="dropdown-menu animate slide border" id="userOptions">
+                      <li>
+                        <a href="#" class="dropdown-item fw-light" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
+                      </li>
+                    </ul>
+                  </li>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header border-bottom-0">
@@ -164,7 +250,7 @@
                                     <nav>
                                       <div class="nav nav-tabs d-flex justify-content-center" id="nav-tab" role="tablist">
                                         <button class="nav-link text-capitalize active" id="nav-sign-in-tab" data-bs-toggle="tab" data-bs-target="#nav-sign-in" type="button" role="tab" aria-controls="nav-sign-in" aria-selected="true">Sign In</button>
-              
+                                        
                                       </div>
                                     </nav>
                                     <div class="tab-content" id="nav-tabContent">
@@ -175,9 +261,8 @@
                                         </div>
                                         <div class="form-group pb-3">
                                           <label class="mb-2" for="sign-in">Password *</label>
-                                    <input type="password" minlength="2" name="password" placeholder="Your Password" class="form-control w-100 rounded-3 p-3" id="loginPass" required="">
+                                          <input type="password" minlength="2" name="password" placeholder="Your Password" class="form-control w-100 rounded-3 p-3" id="loginPass" required="">
                                         </div>
-                                        <label class="py-3 error-label" id="logErrLab"></label>
                                         <button type="submit" onclick="userLog()" name="submit" class="btn btn-dark w-100 my-3">Login</button>
                                       </div>
                                       <div class="tab-pane fade" id="nav-register" role="tabpanel" aria-labelledby="nav-register-tab">
@@ -201,112 +286,32 @@
                             </div>
                         </div>
                     </div>
-        
-    <div id="main-content">
-    <div class="search-popup">
-      <div class="search-popup-container">
-
-        <form role="search" method="get" class="search-form" action="">
-          <input type="search" id="search-form" class="search-field" placeholder="Type and press enter" value="" name="s">
-          <button type="submit" class="search-submit"><svg class="search">
-              <use xlink:href="#search"></use>
-            </svg></button>
-        </form>
-
-        <h5 class="cat-list-title">Browse Categories</h5>
-
-        <ul class="cat-list">
-          <li class="cat-list-item">
-            <a href="#" title="Romance">Romance</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="#" title="Thriller">Thriller</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="#" title="Sci-fi">Sci-fi</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="#" title="Cooking">Cooking</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="#" title="Health">Health</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="#" title="Lifestyle">Lifestyle</a>
-          </li>
-          <li class="cat-list-item">
-            <a href="#" title="Fiction">Fiction</a>
-          </li>
-        </ul>
-
-      </div>
-    </div>
-
-    <div class="logo-set">
-      <div class="logo-div">
-      <a href="index.html" class="logo" >COBBLESTONE</a>
-      </div>
-      <div class="logo-small-div">
-        <a href="index.html" class="logo-small">Library</a>
-      </div>
-    </div>
-    
-
-    <nav id="header-nav" class="navbar navbar-expand-lg py-3">
-        <div class="container">
-
-    <header id="header" class="site-header">
-      
-          <div class="offcanvas offcanvas-end" tabindex="-1" id="bdNavbar" aria-labelledby="bdNavbarOffcanvasLabel">
-            <div class="offcanvas-body">
-              <ul id="navbar" class="navbar-nav text-uppercase justify-content-start justify-content-lg-center align-items-start align-items-lg-center flex-grow-1">
-                <li class="nav-item serach-nav">
-                    <input type="text" id="search-form" class="search-field" placeholder="Type and press enter" value="" name="s">
-                    <i class="ri-search-line search-icon"></i>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="index.html">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="about.html">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link me-4" href="library.html">Library</a>
-                </li>
-
-              </ul>
-              <div class="user-items d-flex">
-                <ul class="d-flex justify-content-end list-unstyled mb-0">
-                  <li class="search-item pe-3">
-                    <a href="#" class="search-button">
-                      <svg class="search">
-                        <use xlink:href="#search"></use>
-                      </svg>
-                    </a>
-                  </li>
-                  <li class="pe-3">
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal" id="userIcon">
-                      <svg class="user">
-                        <use xlink:href="#user"></use>
-                      </svg>
-                    </a>
-                    <!-- Modal -->
-                  </li>
-                  <li class="pe-3">
-                    <div class="dropdown">
-                      <i class="ri-account-circle-2-line  dropdown-toggle"id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>  
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" onclick="logout()">
-                          <a class="dropdown-item" href="#" onclick="logout()">Logout</a>
-                        </div>
-                    </div>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-        </header>
-     </div>
-    </nav>
+        </div>
+      </nav>
+    </header>
+
+  <section class="hero-section position-relative padding-large" style="background-image: url(images/banner-image-bg-1.jpg); background-size: cover; background-repeat: no-repeat; background-position: center; height: 400px;">
+    <div class="hero-content">
+      <div class="container">
+        <div class="row">
+          <div class="text-center">
+            <h1>Contact</h1>
+            <div class="breadcrumbs">
+              <span class="item">
+                <a href="index.html">Home &gt; </a>
+              </span>
+              <span class="item text-decoration-underline">Contact</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
    <div class="shopify-grid padding-large">
       <div class="container">
@@ -838,7 +843,7 @@
         </div>
       </div>
     </div>
-    </div>
+    
 
     <script src="js/jquery-1.11.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

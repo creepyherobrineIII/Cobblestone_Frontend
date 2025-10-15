@@ -1,26 +1,17 @@
 //Constants
-var sidebar = document.querySelector(".sidebar");
-var sideDrop = document.querySelector(".sidebar-dropdown-button");
-var newUserDropdown = document.getElementById("log-wishlist-drop");
+
 //Variables
 var bookURL = 'http://localhost:8080/books/inventory';
 let iTimeslooped = 0;
 
-//Toggle sidebar dropdown
-function toggleSubMenu(button){
-  button.nextElementSibling.classList.toggle('show');
-  button.classList.toggle('rotate');
-}
-
 //Singular DOM object for memory managament
 var BodyObj = {
-  userIcon: null,
+  userOptions: null,
   loginEmail: null,
   loginPass: null,
-  sideMenuBar: null,
-  sideMenuList: null,
-  fullSideMenu: null,
-  logErrLab: null
+  navBar: null,
+  logErrLab: null,
+  mainSearchBar: null
 };
 
 //Single values object for memory management
@@ -201,19 +192,8 @@ var BodyValuesObj = {
 
 //Check if user is logged in && user type for sidebar
 
-window.addEventListener('load', function(){
-  BodyObj.fullSideMenu = document.getElementById("full-side");
-  BodyObj.sideMenuList = document.getElementById("side-menu-list");
-
-  const toggle = document.querySelector(".toggle");
-
-  //Toggle sidebar
-    toggle.addEventListener("click", () =>{
-      sidebar.classList.toggle("close");
-      //body.classList.toggle("blurred");
-    });
-  
-  //Get catalogue
+window.addEventListener('load', function(){ 
+//Get catalogue
 
   fetch(bookURL, {
         method: 'GET',
@@ -240,10 +220,10 @@ window.addEventListener('load', function(){
     let user = JSON.parse(loggedUser);
     let userT = user.userType;
 
-    changeSidebar(userT);
+    changeNavBar(userT);
 
   }else{
-    changeSidebar('Not logged');
+    changeNavBar('Not logged');
   }
     
 })
@@ -294,134 +274,142 @@ async function userLog(){
   var logUser = JSON.parse(loggedUser);
   let userT = logUser.userType;
 
-    changeSidebar(userT);
+    changeNavBar(userT);
 
     if(userT === 'Member'){
       window.location.href = 'index.html';
-    } else{
+    } else if(userT === 'Librarian'){
       window.location.href = 'lib-index.html'
     }
 }
 
 //Function to change sidebar depending on usertype
-function changeSidebar(userType){
+function changeNavBar(userType){
+
   console.log(userType);
-  BodyObj.userIcon = this.document.getElementById("userIcon");
+  BodyObj.userOptions = document.getElementById("userOptions");
+  BodyObj.navBar = document.getElementById('navbar-element');
+  BodyObj.mainSearchBar = document.getElementById('main-search');
+
 
   switch(userType){
     case 'Librarian':{
-      BodyObj.fullSideMenu.classList.toggle('sidebar', true);
-      BodyObj.fullSideMenu.classList.toggle('close', true);
-      BodyObj.fullSideMenu.style.removeProperty('display');
-      BodyObj.userIcon.style.display = 'none';
-      BodyObj.sideMenuList.innerHTML = `<li class="sm-nav-link">
-                            <a href="lib-index.html">
-                                <i class="ri-home-3-line icon"></i>
-                                <span class="text sm-nav-text">Home</span>
-                            </a>
-                        </li>
-                        <li class="sm-nav-link side-drop">
-                             <button onclick="toggleSubMenu(this)" class="sidebar-dropdown-button" id="books-dropdown">
-                                <i class="ri-book-shelf-line"></i>
-                                <span class="text sm-nav-text">Books</span>
-                                <i class="ri-arrow-drop-down-line d-icon"></i>
-                           </button>
-                           <ul class="sidebar-sub-menu" id="books-sub-menu">
-                                <li><a href="check-in.html"><span class="text sm-nav-text">Check-In</span></a></li>
-                                <li><a href="check-out.html"><span class="text sm-nav-text">Check-Out</span></a></li>
-                           </ul>
-                        </li>
-                        <li class="sm-nav-link side-drop">
-                           <button onclick="toggleSubMenu(this)" class="sidebar-dropdown-button" id="loans-dropdown">
-                                <i class="ri-archive-stack-fill icon"></i>
-                                <span class="text sm-nav-text">Loans</span>
-                                <i class="ri-arrow-drop-down-line d-icon"></i>
-                           </button>
-                           <ul class="sidebar-sub-menu" id="loan-sub-menu">
-                                <li><a href="fee-payment.html"><span class="text sm-nav-text">Fee Payment</span></a></li>
-                           </ul>
-                        </li>
-                        <li class="sm-nav-link side-drop">
-                             <button onclick="toggleSubMenu(this)" class="sidebar-dropdown-button" id="inventory-dropdown">
-                                <i class="ri-survey-line"></i>
-                                <span class="text sm-nav-text">Inventory</span>
-                                <i class="ri-arrow-drop-down-line d-icon"></i>
-                           </button>
-                           <ul class="sidebar-sub-menu" id="inventory-sub-menu">
-                                <li><a href="add-book.html"><span class="text sm-nav-text">Add book</span></a></li>
-                                <li><a href="lib-catalogue.html"><span class="text sm-nav-text">Update inventory</span></a></li>
-                           </ul>
-                        </li>
-                        <li class="sm-nav-link">
-                            <a href="stats.html">
-                                <i class="ri-bar-chart-line"></i>
-                                <span class="text sm-nav-text">Analytics</span>
-                            </a>
-                        </li>
-                        <li class="sm-nav-link side-drop">
-                             <button onclick="toggleSubMenu(this)" class="sidebar-dropdown-button" id="profile-dropdown">
-                                <i class="ri-user-line icon"></i>
-                                <span class="text sm-nav-text">Profile</span>
-                                <i class="ri-arrow-drop-down-line d-icon"></i>
-                           </button>
-                           <ul class="sidebar-sub-menu" id="profile-sub-menu">
-                                <li><a href="#"><span class="text sm-nav-text">Change details</span></a></li>
-                           </ul>
-                        </li>`;
-                        break;
+     BodyObj.navBar.innerHTML = `<li class="nav-item">
+                  <a class="nav-link me-4" href="lib-index.html">Home</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link me-4 dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Loans</a>
+                  <ul class="dropdown-menu animate slide border">
+                    <li>
+                      <a href="check-out.html" class="dropdown-item">Check-Out Books</a>
+                    </li>
+                    <li>
+                      <a href="check-in.html" class="dropdown-item">Check-In Books</a>
+                    </li>
+                    <li>
+                      <a href="fee-payment.html" class="dropdown-item">Fee Settlements</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link me-4 dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Inventory</a>
+                  <ul class="dropdown-menu animate slide border">
+                    <li>
+                      <a href="add-book.html" class="dropdown-item">Add New Book</a>
+                    </li>
+                    <li>
+                      <a href="lib-catalogue.html" class="dropdown-item">Manage Catalogue</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="stats.html">Analystics</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="lib-profile.html">Profile</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link me-4 dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Admin</a>
+                  <ul class="dropdown-menu animate slide border">
+                    <li>
+                      <a href="lib-sign-up.html" class="dropdown-item">Add new librarian</a>
+                    </li>
+                  </ul>
+                </li>`;
+      
+      BodyObj.mainSearchBar.classList.toggle('d-none', true);
+      BodyObj.userOptions.innerHTML = `<li>
+                        <button class="dropdown-item" onclick="logout()">Logout</button>
+                      </li>`;
+      break;
     }
 
     case 'Member':{
-      BodyObj.fullSideMenu.classList.toggle('sidebar', true);
-      BodyObj.fullSideMenu.classList.toggle('close', true);
-      BodyObj.fullSideMenu.style.removeProperty('display');
-      BodyObj.userIcon.style.display = 'none';
-      BodyObj.sideMenuList.innerHTML = `<li class="sm-nav-link">
-                            <a href="index.html">
-                                <i class="ri-home-3-line icon"></i>
-                                <span class="text sm-nav-text">Home</span>
-                            </a>
-                        </li>
-                        <li class="sm-nav-link">
-                            <a href="#">
-                                <i class="ri-time-line icon"></i>
-                                <span class="text sm-nav-text">Reservations</span>
-                            </a>
-                        </li>
-                        <li class="sm-nav-link side-drop">
-                           <button onclick="toggleSubMenu(this)" class="sidebar-dropdown-button" id="loans-dropdown">
-                                <i class="ri-archive-stack-fill icon"></i>
-                                <span class="text sm-nav-text">Loans</span>
-                                <i class="ri-arrow-drop-down-line d-icon"></i>
-                           </button>
-                           <ul class="sidebar-sub-menu" id="loan-sub-menu">
-                                <li><a href="#"><span class="text sm-nav-text">Active Loans</span></a></li>
-                                <li><a href="#"><span class="text sm-nav-text">Past Loans</span></a></li>
-                           </ul>
-                        </li>
-                        <li class="sm-nav-link side-drop">
-                             <button onclick="toggleSubMenu(this)" class="sidebar-dropdown-button" id="profile-dropdown">
-                                <i class="ri-user-line icon"></i>
-                                <span class="text sm-nav-text">Profile</span>
-                                <i class="ri-arrow-drop-down-line d-icon"></i>
-                           </button>
-                           <ul class="sidebar-sub-menu" id="profile-sub-menu">
-                                <li><a href="#"><span class="text sm-nav-text">Change details</span></a></li>
-                           </ul>
-                        </li>`;
-                        break;
+      BodyObj.navBar.innerHTML = `<li class="nav-item">
+                  <a class="nav-link me-4" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="library.html">Library</a>
+                </li>
+                <li class="nav-item dropdown" id="account-drop">
+                  <a class="nav-link me-4 dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Account</a>
+                  <ul class="dropdown-menu animate slide border">
+                    <li>
+                      <a href="reservations.html" class="dropdown-item">Reservations</a>
+                    </li>
+                    <li>
+                      <a href="loans.html" class="dropdown-item">Loans</a>
+                    </li>
+                    <li>
+                      <a href="fees.html" class="dropdown-item">View Fees</a>
+                    </li>
+                    <li>
+                      <a href="profile.html" class="dropdown-item">Profile</a>
+                    </li>
+                  </ul>
+                </li>`;
+
+      BodyObj.mainSearchBar.classList.toggle('d-none', false);
+      BodyObj.userOptions.innerHTML = `<li>
+                        <button class="dropdown-item" onclick="logout()">logout<button>
+                      </li>`;
+      break;
     };
 
     case 'Not logged':{
-      BodyObj.userIcon.style = '';
-      BodyObj.fullSideMenu.style.display = 'none';
-      BodyObj.fullSideMenu.classList.toggle('sidebar', false);
-      BodyObj.fullSideMenu.classList.toggle('close', false);
+      BodyObj.navBar.innerHTML = `<li class="nav-item">
+                  <a class="nav-link me-4" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="library.html">Library</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="sign-up.html">Sign-Up</a>
+                </li>`;
+
+      BodyObj.mainSearchBar.classList.toggle('d-none', false);
+      BodyObj.userOptions.innerHTML = ` <li>
+                        <a href="#" class="dropdown-item fw-light" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
+                      </li>`;
       break;
     };
 
     default:{
-      BodyObj.userIcon.style = '';
+      BodyObj.navBar.innerHTML = `<li class="nav-item">
+                  <a class="nav-link me-4" href="index.html">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="library.html">Library</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-4" href="sign-up.html">Sign-Up</a>
+                </li>`;
+      
+      BodyObj.mainSearchBar.classList.toggle('d-none', false);
+      BodyObj.userOptions.innerHTML = ` <li>
+                        <a href="#" class="dropdown-item fw-light" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</a>
+                      </li>`;
+      break;
     }
   }
 
